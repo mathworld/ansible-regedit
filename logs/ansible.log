@@ -1,0 +1,750 @@
+2021-02-05 22:06:51,773 p=12742 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-05 22:06:51,778 p=12742 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-05 22:06:51,967 p=12742 u=mersenne n=ansible | ERROR! couldn't resolve module/action 'msireg'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-using-with_items.yml': line 8, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Test cases for modifying MSIReg.reg
+      ^ here
+
+2021-02-05 22:09:50,262 p=13001 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-05 22:09:50,266 p=13001 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-05 22:09:50,377 p=13001 u=mersenne n=ansible | playbook: test-regedit-using-with_items.yml
+2021-02-05 22:19:05,125 p=13744 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-05 22:19:05,130 p=13744 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-05 22:19:05,271 p=13744 u=mersenne n=ansible | playbook: test-regedit-disobeying-dry.yml
+2021-02-05 22:19:25,854 p=13865 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-05 22:19:25,857 p=13865 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-05 22:19:25,976 p=13865 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-05 22:19:25,992 p=13865 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-05 22:19:26,532 p=13865 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:19:26,536 p=13865 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-05 22:19:26,789 p=13865 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:19:26,793 p=13865 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-05 22:19:27,044 p=13865 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:19:27,048 p=13865 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-05 22:19:27,300 p=13865 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 22:19:27,304 p=13865 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-05 22:19:27,548 p=13865 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 22:19:27,552 p=13865 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-05 22:19:27,818 p=13865 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:19:27,823 p=13865 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-05 22:19:28,084 p=13865 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:19:28,088 p=13865 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-05 22:19:28,331 p=13865 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:19:28,335 p=13865 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-05 22:19:28,595 p=13865 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:19:28,599 p=13865 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-05 22:19:28,850 p=13865 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:19:28,854 p=13865 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-05 22:19:29,105 p=13865 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:19:29,111 p=13865 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-05 22:19:29,112 p=13865 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-05 22:52:12,368 p=16656 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-05 22:52:12,373 p=16656 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-05 22:52:12,548 p=16656 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-05 22:52:12,561 p=16656 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-05 22:52:12,962 p=16656 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:52:12,965 p=16656 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-05 22:52:13,197 p=16656 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:52:13,201 p=16656 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-05 22:52:13,431 p=16656 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:52:13,435 p=16656 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-05 22:52:13,669 p=16656 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 22:52:13,673 p=16656 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-05 22:52:13,908 p=16656 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 22:52:13,911 p=16656 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-05 22:52:14,158 p=16656 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:52:14,161 p=16656 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-05 22:52:14,401 p=16656 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:52:14,405 p=16656 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-05 22:52:14,640 p=16656 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:52:14,643 p=16656 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-05 22:52:14,880 p=16656 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:52:14,884 p=16656 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-05 22:52:15,119 p=16656 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:52:15,123 p=16656 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-05 22:52:15,352 p=16656 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:52:15,359 p=16656 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-05 22:52:15,359 p=16656 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-05 22:53:59,564 p=17197 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-05 22:53:59,568 p=17197 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-05 22:53:59,687 p=17197 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-05 22:53:59,698 p=17197 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-05 22:54:00,089 p=17197 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:54:00,093 p=17197 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-05 22:54:00,328 p=17197 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:54:00,332 p=17197 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-05 22:54:00,575 p=17197 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:54:00,579 p=17197 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-05 22:54:00,815 p=17197 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 22:54:00,818 p=17197 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-05 22:54:01,055 p=17197 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 22:54:01,058 p=17197 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-05 22:54:01,292 p=17197 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:54:01,295 p=17197 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-05 22:54:01,538 p=17197 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:54:01,541 p=17197 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-05 22:54:01,780 p=17197 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:54:01,784 p=17197 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-05 22:54:02,028 p=17197 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:54:02,031 p=17197 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-05 22:54:02,271 p=17197 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:54:02,275 p=17197 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-05 22:54:02,507 p=17197 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:54:02,513 p=17197 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-05 22:54:02,513 p=17197 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-05 22:55:53,852 p=17857 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-05 22:55:53,856 p=17857 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-05 22:55:53,974 p=17857 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-05 22:55:53,986 p=17857 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-05 22:55:54,378 p=17857 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:55:54,381 p=17857 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-05 22:55:54,619 p=17857 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:55:54,622 p=17857 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-05 22:55:54,859 p=17857 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:55:54,863 p=17857 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-05 22:55:55,099 p=17857 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 22:55:55,103 p=17857 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-05 22:55:55,342 p=17857 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 22:55:55,345 p=17857 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-05 22:55:55,580 p=17857 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:55:55,583 p=17857 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-05 22:55:55,821 p=17857 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:55:55,826 p=17857 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-05 22:55:56,079 p=17857 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:55:56,083 p=17857 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-05 22:55:56,325 p=17857 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:55:56,329 p=17857 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-05 22:55:56,563 p=17857 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:55:56,567 p=17857 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-05 22:55:56,808 p=17857 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 22:55:56,815 p=17857 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-05 22:55:56,815 p=17857 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-05 23:37:32,799 p=21542 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-05 23:37:32,805 p=21542 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-05 23:37:32,997 p=21542 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-05 23:37:33,011 p=21542 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-05 23:37:33,513 p=21542 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 23:37:33,517 p=21542 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-05 23:37:33,762 p=21542 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 23:37:33,765 p=21542 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-05 23:37:34,008 p=21542 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 23:37:34,012 p=21542 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-05 23:37:34,252 p=21542 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 23:37:34,256 p=21542 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-05 23:37:34,494 p=21542 u=mersenne n=ansible | ok: [localhost]
+2021-02-05 23:37:34,497 p=21542 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-05 23:37:34,740 p=21542 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 23:37:34,744 p=21542 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-05 23:37:34,984 p=21542 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 23:37:34,988 p=21542 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-05 23:37:35,222 p=21542 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 23:37:35,226 p=21542 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-05 23:37:35,459 p=21542 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 23:37:35,462 p=21542 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-05 23:37:35,708 p=21542 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 23:37:35,711 p=21542 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-05 23:37:35,959 p=21542 u=mersenne n=ansible | changed: [localhost]
+2021-02-05 23:37:35,966 p=21542 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-05 23:37:35,966 p=21542 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 10:25:58,763 p=61071 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 10:25:58,768 p=61071 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 10:25:58,956 p=61071 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 10:25:58,969 p=61071 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 10:25:59,377 p=61071 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: UnboundLocalError: local variable 'i' referenced before assignment
+2021-02-06 10:25:59,377 p=61071 u=mersenne n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612603559.016384-61075-119952862407369/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612603559.016384-61075-119952862407369/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612603559.016384-61075-119952862407369/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/Users/mersenne/opt/anaconda3/lib/python3.8/runpy.py\", line 207, in run_module\n    return _run_module_code(code, init_globals, run_name, mod_spec)\n  File \"/Users/mersenne/opt/anaconda3/lib/python3.8/runpy.py\", line 97, in _run_module_code\n    _run_code(code, mod_globals, init_globals,\n  File \"/Users/mersenne/opt/anaconda3/lib/python3.8/runpy.py\", line 87, in _run_code\n    exec(code, run_globals)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_l3zyr7qk/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 627, in <module>\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_l3zyr7qk/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 571, in main\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_l3zyr7qk/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 193, in read_registry\nUnboundLocalError: local variable 'i' referenced before assignment\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 10:25:59,378 p=61071 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 10:25:59,378 p=61071 u=mersenne n=ansible | localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-02-06 10:26:44,685 p=61352 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 10:26:44,688 p=61352 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 10:26:44,806 p=61352 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 10:26:44,817 p=61352 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 10:26:45,208 p=61352 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:26:45,212 p=61352 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 10:26:45,458 p=61352 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:26:45,461 p=61352 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 10:26:45,698 p=61352 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:26:45,702 p=61352 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 10:26:45,938 p=61352 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 10:26:45,942 p=61352 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 10:26:46,191 p=61352 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 10:26:46,194 p=61352 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 10:26:46,441 p=61352 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:26:46,444 p=61352 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 10:26:46,677 p=61352 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:26:46,680 p=61352 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 10:26:46,913 p=61352 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:26:46,916 p=61352 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 10:26:47,153 p=61352 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:26:47,156 p=61352 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 10:26:47,395 p=61352 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:26:47,399 p=61352 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 10:26:47,636 p=61352 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:26:47,643 p=61352 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 10:26:47,643 p=61352 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 10:28:32,262 p=61886 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 10:28:32,267 p=61886 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 10:28:32,417 p=61886 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 10:28:32,429 p=61886 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 10:28:32,828 p=61886 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:28:32,831 p=61886 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 10:28:33,068 p=61886 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:28:33,071 p=61886 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 10:28:33,553 p=61886 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:28:33,557 p=61886 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 10:28:33,794 p=61886 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 10:28:33,798 p=61886 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 10:28:34,039 p=61886 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 10:28:34,043 p=61886 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 10:28:34,282 p=61886 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:28:34,285 p=61886 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 10:28:34,525 p=61886 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:28:34,528 p=61886 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 10:28:34,765 p=61886 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:28:34,769 p=61886 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 10:28:35,006 p=61886 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:28:35,009 p=61886 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 10:28:35,245 p=61886 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:28:35,249 p=61886 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 10:28:35,493 p=61886 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:28:35,500 p=61886 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 10:28:35,500 p=61886 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 10:31:50,238 p=62515 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 10:31:50,242 p=62515 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 10:31:50,385 p=62515 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 10:31:50,408 p=62515 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 10:31:50,799 p=62515 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:31:50,803 p=62515 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 10:31:51,039 p=62515 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:31:51,042 p=62515 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 10:31:51,276 p=62515 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:31:51,279 p=62515 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 10:31:51,517 p=62515 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 10:31:51,521 p=62515 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 10:31:51,755 p=62515 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 10:31:51,759 p=62515 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 10:31:51,997 p=62515 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:31:52,000 p=62515 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 10:31:52,246 p=62515 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:31:52,249 p=62515 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 10:31:52,491 p=62515 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:31:52,495 p=62515 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 10:31:52,733 p=62515 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:31:52,737 p=62515 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 10:31:52,971 p=62515 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:31:52,975 p=62515 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 10:31:53,215 p=62515 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:31:53,222 p=62515 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 10:31:53,222 p=62515 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 10:34:44,187 p=63294 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 10:34:44,192 p=63294 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 10:34:44,343 p=63294 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 10:34:44,356 p=63294 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 10:34:44,753 p=63294 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:34:44,757 p=63294 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 10:34:44,991 p=63294 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:34:44,994 p=63294 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 10:34:45,234 p=63294 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:34:45,237 p=63294 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 10:34:45,477 p=63294 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 10:34:45,480 p=63294 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 10:34:45,717 p=63294 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 10:34:45,721 p=63294 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 10:34:45,961 p=63294 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:34:45,965 p=63294 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 10:34:46,204 p=63294 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:34:46,208 p=63294 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 10:34:46,443 p=63294 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:34:46,446 p=63294 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 10:34:46,684 p=63294 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:34:46,688 p=63294 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 10:34:46,925 p=63294 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:34:46,928 p=63294 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 10:34:47,165 p=63294 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 10:34:47,172 p=63294 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 10:34:47,172 p=63294 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 14:46:11,241 p=77683 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 14:46:11,246 p=77683 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 14:46:11,444 p=77683 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 14:46:11,458 p=77683 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 14:46:11,869 p=77683 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 14:46:11,872 p=77683 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 14:46:12,110 p=77683 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 14:46:12,113 p=77683 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 14:46:12,354 p=77683 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 14:46:12,358 p=77683 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 14:46:12,627 p=77683 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 14:46:12,630 p=77683 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 14:46:12,882 p=77683 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 14:46:12,885 p=77683 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 14:46:13,124 p=77683 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 14:46:13,128 p=77683 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 14:46:13,369 p=77683 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 14:46:13,372 p=77683 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 14:46:13,625 p=77683 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 14:46:13,629 p=77683 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 14:46:13,866 p=77683 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 14:46:13,870 p=77683 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 14:46:14,111 p=77683 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 14:46:14,114 p=77683 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 14:46:14,348 p=77683 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 14:46:14,354 p=77683 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 14:46:14,355 p=77683 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 15:22:56,342 p=80476 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 15:22:56,347 p=80476 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 15:22:56,539 p=80476 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 15:22:56,552 p=80476 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 15:22:56,980 p=80476 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:22:56,983 p=80476 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 15:22:57,232 p=80476 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:22:57,236 p=80476 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 15:22:57,476 p=80476 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:22:57,480 p=80476 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 15:22:57,722 p=80476 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:22:57,726 p=80476 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 15:22:57,963 p=80476 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:22:57,967 p=80476 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 15:22:58,207 p=80476 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:22:58,211 p=80476 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 15:22:58,450 p=80476 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:22:58,453 p=80476 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 15:22:58,693 p=80476 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:22:58,697 p=80476 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 15:22:58,937 p=80476 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:22:58,941 p=80476 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 15:22:59,195 p=80476 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:22:59,200 p=80476 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 15:22:59,482 p=80476 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:22:59,489 p=80476 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 15:22:59,489 p=80476 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 15:27:59,334 p=81550 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 15:27:59,339 p=81550 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 15:27:59,488 p=81550 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 15:27:59,500 p=81550 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 15:27:59,899 p=81550 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:27:59,904 p=81550 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 15:28:00,146 p=81550 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:28:00,150 p=81550 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 15:28:00,397 p=81550 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:28:00,401 p=81550 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 15:28:00,640 p=81550 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:28:00,644 p=81550 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 15:28:00,882 p=81550 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:28:00,886 p=81550 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 15:28:01,148 p=81550 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:28:01,152 p=81550 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 15:28:01,408 p=81550 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:28:01,412 p=81550 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 15:28:01,659 p=81550 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:28:01,662 p=81550 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 15:28:01,898 p=81550 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:28:01,901 p=81550 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 15:28:02,139 p=81550 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:28:02,142 p=81550 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 15:28:02,387 p=81550 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:28:02,394 p=81550 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 15:28:02,395 p=81550 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 15:34:22,140 p=82440 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 15:34:22,145 p=82440 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 15:34:22,313 p=82440 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 15:34:22,330 p=82440 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 15:34:22,743 p=82440 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:34:22,747 p=82440 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 15:34:22,993 p=82440 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:34:22,997 p=82440 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 15:34:23,236 p=82440 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:34:23,240 p=82440 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 15:34:23,485 p=82440 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:34:23,489 p=82440 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 15:34:23,736 p=82440 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:34:23,739 p=82440 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 15:34:23,984 p=82440 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:34:23,988 p=82440 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 15:34:24,228 p=82440 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:34:24,231 p=82440 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 15:34:24,474 p=82440 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:34:24,478 p=82440 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 15:34:24,735 p=82440 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:34:24,738 p=82440 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 15:34:24,994 p=82440 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:34:24,998 p=82440 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 15:34:25,276 p=82440 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:34:25,283 p=82440 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 15:34:25,283 p=82440 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 15:36:07,490 p=83286 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 15:36:07,494 p=83286 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 15:36:07,609 p=83286 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 15:36:07,621 p=83286 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 15:36:08,003 p=83286 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:36:08,007 p=83286 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 15:36:08,242 p=83286 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:36:08,245 p=83286 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 15:36:08,482 p=83286 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:36:08,485 p=83286 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 15:36:08,726 p=83286 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:36:08,730 p=83286 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 15:36:08,962 p=83286 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:36:08,965 p=83286 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 15:36:09,202 p=83286 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:36:09,206 p=83286 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 15:36:09,445 p=83286 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:36:09,449 p=83286 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 15:36:09,690 p=83286 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:36:09,694 p=83286 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 15:36:09,931 p=83286 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:36:09,934 p=83286 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 15:36:10,158 p=83286 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:36:10,161 p=83286 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 15:36:10,402 p=83286 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:36:10,410 p=83286 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 15:36:10,410 p=83286 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 15:37:39,145 p=83921 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 15:37:39,149 p=83921 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 15:37:39,265 p=83921 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 15:37:39,277 p=83921 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 15:37:39,659 p=83921 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:37:39,663 p=83921 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 15:37:39,911 p=83921 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:37:39,915 p=83921 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 15:37:40,145 p=83921 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:37:40,149 p=83921 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 15:37:40,388 p=83921 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:37:40,392 p=83921 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 15:37:40,654 p=83921 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:37:40,658 p=83921 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 15:37:40,891 p=83921 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:37:40,895 p=83921 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 15:37:41,133 p=83921 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:37:41,137 p=83921 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 15:37:41,375 p=83921 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:37:41,379 p=83921 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 15:37:41,621 p=83921 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:37:41,626 p=83921 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 15:37:41,863 p=83921 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:37:41,867 p=83921 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 15:37:42,107 p=83921 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:37:42,114 p=83921 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 15:37:42,114 p=83921 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 15:45:26,841 p=85020 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 15:45:26,846 p=85020 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 15:45:26,976 p=85020 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 15:45:26,987 p=85020 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 15:45:27,378 p=85020 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:45:27,382 p=85020 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 15:45:27,625 p=85020 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:45:27,629 p=85020 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 15:45:27,866 p=85020 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:45:27,869 p=85020 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 15:45:28,101 p=85020 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:45:28,105 p=85020 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 15:45:28,352 p=85020 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:45:28,356 p=85020 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 15:45:28,598 p=85020 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:45:28,602 p=85020 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 15:45:28,837 p=85020 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:45:28,841 p=85020 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 15:45:29,076 p=85020 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:45:29,079 p=85020 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 15:45:29,315 p=85020 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:45:29,319 p=85020 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 15:45:29,562 p=85020 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:45:29,566 p=85020 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 15:45:29,807 p=85020 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:45:29,813 p=85020 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 15:45:29,814 p=85020 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 15:57:01,780 p=86330 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 15:57:01,785 p=86330 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 15:57:01,963 p=86330 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 15:57:01,977 p=86330 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 15:57:02,380 p=86330 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:57:02,384 p=86330 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 15:57:02,624 p=86330 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:57:02,627 p=86330 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 15:57:02,859 p=86330 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:57:02,863 p=86330 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 15:57:03,104 p=86330 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:57:03,108 p=86330 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 15:57:03,350 p=86330 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:57:03,353 p=86330 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 15:57:03,592 p=86330 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:57:03,596 p=86330 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 15:57:03,834 p=86330 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:57:03,838 p=86330 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 15:57:04,070 p=86330 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:57:04,074 p=86330 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 15:57:04,317 p=86330 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:57:04,320 p=86330 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 15:57:04,580 p=86330 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:57:04,583 p=86330 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 15:57:04,853 p=86330 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:57:04,860 p=86330 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 15:57:04,860 p=86330 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 15:58:21,168 p=86939 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 15:58:21,172 p=86939 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 15:58:21,317 p=86939 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 15:58:21,330 p=86939 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 15:58:21,733 p=86939 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:58:21,737 p=86939 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 15:58:21,969 p=86939 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:58:21,973 p=86939 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 15:58:22,210 p=86939 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:58:22,214 p=86939 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 15:58:22,452 p=86939 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:58:22,456 p=86939 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 15:58:22,700 p=86939 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 15:58:22,704 p=86939 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 15:58:22,955 p=86939 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:58:22,959 p=86939 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 15:58:23,203 p=86939 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:58:23,206 p=86939 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 15:58:23,448 p=86939 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:58:23,452 p=86939 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 15:58:23,691 p=86939 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:58:23,696 p=86939 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 15:58:23,942 p=86939 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:58:23,946 p=86939 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 15:58:24,191 p=86939 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 15:58:24,197 p=86939 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 15:58:24,197 p=86939 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 16:16:42,884 p=88976 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 16:16:42,889 p=88976 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 16:16:43,068 p=88976 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 16:16:43,082 p=88976 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 16:16:43,490 p=88976 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 16:16:43,494 p=88976 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 16:16:43,738 p=88976 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 16:16:43,741 p=88976 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 16:16:43,978 p=88976 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 16:16:43,982 p=88976 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 16:16:44,223 p=88976 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 16:16:44,227 p=88976 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 16:16:44,472 p=88976 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 16:16:44,476 p=88976 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 16:16:44,716 p=88976 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 16:16:44,720 p=88976 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 16:16:44,961 p=88976 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 16:16:44,964 p=88976 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 16:16:45,208 p=88976 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 16:16:45,211 p=88976 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 16:16:45,452 p=88976 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 16:16:45,456 p=88976 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 16:16:45,697 p=88976 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 16:16:45,701 p=88976 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 16:16:45,945 p=88976 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 16:16:45,952 p=88976 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 16:16:45,952 p=88976 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 17:15:29,831 p=93344 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 17:15:29,836 p=93344 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 17:15:30,023 p=93344 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 17:15:30,034 p=93344 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 17:15:30,436 p=93344 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:15:30,440 p=93344 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 17:15:30,684 p=93344 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:15:30,688 p=93344 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 17:15:30,929 p=93344 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:15:30,932 p=93344 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 17:15:31,163 p=93344 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 17:15:31,167 p=93344 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 17:15:31,407 p=93344 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 17:15:31,411 p=93344 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 17:15:31,652 p=93344 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:15:31,655 p=93344 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 17:15:31,896 p=93344 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:15:31,900 p=93344 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 17:15:32,140 p=93344 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:15:32,144 p=93344 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 17:15:32,389 p=93344 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:15:32,393 p=93344 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 17:15:32,638 p=93344 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:15:32,642 p=93344 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 17:15:32,880 p=93344 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:15:32,887 p=93344 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 17:15:32,887 p=93344 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 17:17:28,387 p=93905 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 17:17:28,392 p=93905 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 17:17:28,538 p=93905 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 17:17:28,550 p=93905 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 17:17:28,950 p=93905 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:17:28,954 p=93905 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 17:17:29,186 p=93905 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:17:29,190 p=93905 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 17:17:29,438 p=93905 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:17:29,442 p=93905 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 17:17:29,684 p=93905 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 17:17:29,688 p=93905 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 17:17:29,929 p=93905 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 17:17:29,933 p=93905 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 17:17:30,169 p=93905 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:17:30,173 p=93905 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 17:17:30,415 p=93905 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:17:30,418 p=93905 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 17:17:30,657 p=93905 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:17:30,661 p=93905 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 17:17:30,908 p=93905 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:17:30,912 p=93905 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 17:17:31,150 p=93905 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:17:31,154 p=93905 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 17:17:31,394 p=93905 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:17:31,401 p=93905 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 17:17:31,401 p=93905 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 17:18:46,053 p=94412 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 17:18:46,058 p=94412 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 17:18:46,206 p=94412 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 17:18:46,218 p=94412 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 17:18:46,617 p=94412 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:18:46,621 p=94412 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 17:18:46,857 p=94412 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:18:46,860 p=94412 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 17:18:47,100 p=94412 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:18:47,103 p=94412 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 17:18:47,339 p=94412 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 17:18:47,343 p=94412 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 17:18:47,584 p=94412 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 17:18:47,588 p=94412 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 17:18:47,828 p=94412 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:18:47,832 p=94412 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 17:18:48,070 p=94412 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:18:48,074 p=94412 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 17:18:48,310 p=94412 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:18:48,313 p=94412 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 17:18:48,552 p=94412 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:18:48,557 p=94412 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 17:18:48,795 p=94412 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:18:48,799 p=94412 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 17:18:49,040 p=94412 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:18:49,047 p=94412 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 17:18:49,048 p=94412 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 17:26:17,996 p=95746 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 17:26:17,999 p=95746 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 17:26:18,115 p=95746 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 17:26:18,126 p=95746 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] *****************************************************************************************************************************************************************************************
+2021-02-06 17:26:18,506 p=95746 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:26:18,510 p=95746 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] **************************************************************************************************************************************************
+2021-02-06 17:26:18,750 p=95746 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:26:18,754 p=95746 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] ************************************************************************************************************************************************
+2021-02-06 17:26:18,994 p=95746 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:26:18,997 p=95746 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] *****************************************************************************************************************************************************************************
+2021-02-06 17:26:19,239 p=95746 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 17:26:19,242 p=95746 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] ************************************************************************************************************************************************************
+2021-02-06 17:26:19,493 p=95746 u=mersenne n=ansible | ok: [localhost]
+2021-02-06 17:26:19,496 p=95746 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] ************************************************************************************************************************************************************
+2021-02-06 17:26:19,736 p=95746 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:26:19,740 p=95746 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ******************************************************************************************************************************************************************************
+2021-02-06 17:26:19,977 p=95746 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:26:19,981 p=95746 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ********************************************************************************************************************************************
+2021-02-06 17:26:20,215 p=95746 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:26:20,218 p=95746 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] ************************************************************************************************************************************************************************************
+2021-02-06 17:26:20,462 p=95746 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:26:20,465 p=95746 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ******************************************************************************************************************************************************************************************
+2021-02-06 17:26:20,709 p=95746 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:26:20,712 p=95746 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] ****************************************************************************************************************************************************************************************
+2021-02-06 17:26:20,947 p=95746 u=mersenne n=ansible | changed: [localhost]
+2021-02-06 17:26:20,954 p=95746 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 17:26:20,954 p=95746 u=mersenne n=ansible | localhost                  : ok=11   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 17:27:08,006 p=96346 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-06 17:27:08,009 p=96346 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-06 17:27:08,127 p=96346 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 17:27:08,138 p=96346 u=mersenne n=ansible | TASK [Test cases for modifying registry file.] *******************************************************************************************************************************************************************************
+2021-02-06 17:27:08,539 p=96346 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]'})
+2021-02-06 17:27:08,769 p=96346 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullName', 'val': '"Harlequin Joost"'})
+2021-02-06 17:27:08,992 p=96346 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullBareWord', 'val': 'dword:11111111'})
+2021-02-06 17:27:09,206 p=96346 u=mersenne n=ansible | ok: [localhost] => (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE]'})
+2021-02-06 17:27:09,425 p=96346 u=mersenne n=ansible | ok: [localhost] => (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\Common Files]', 'key': 'CloudConnectorConfigDir', 'val': '"/var/opt/vendor/install/CloudConnectorConfig"'})
+2021-02-06 17:27:09,650 p=96346 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe]'})
+2021-02-06 17:27:09,875 p=96346 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'TreatAsSystem'})
+2021-02-06 17:27:10,099 p=96346 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'System', 'val': 'dword:00000001'})
+2021-02-06 17:27:10,327 p=96346 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe]', 'new_hkey': '[HKEY_LOCAL_MACHINE\\HelloWorld\\UpdateMe]'})
+2021-02-06 17:27:10,595 p=96346 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'NodeJS', 'new_key': 'nodejs'})
+2021-02-06 17:27:10,822 p=96346 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'nodejs', 'new_val': '"/var/opt/vendor/install/NodeJS/bin/node"'})
+2021-02-06 17:27:10,831 p=96346 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 17:27:10,832 p=96346 u=mersenne n=ansible | localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-06 17:38:22,704 p=98429 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] ***********************************************************************************************************************************************************************************
+2021-02-06 17:38:22,717 p=98429 u=mersenne n=ansible | TASK [Test cases for modifying registry file.] *******************************************************************************************************************************************************************************
+2021-02-06 17:38:23,236 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:23,237 p=98429 u=mersenne n=ansible | [WARNING]: Platform darwin on host 127.0.0.1 is using the discovered Python interpreter at /usr/bin/python, but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible/2.10/reference_appendices/interpreter_discovery.html for more information.
+
+2021-02-06 17:38:23,237 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]'}) => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python"}, "ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]", "verb": "add"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629502.771461-98433-279776566714653/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629502.771461-98433-279776566714653/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629502.771461-98433-279776566714653/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_d3iPby/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:23,434 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:23,434 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullName', 'val': '"Harlequin Joost"'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]", "key": "FullName", "val": "\"Harlequin Joost\"", "verb": "add"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.2539608-98433-264689897834938/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.2539608-98433-264689897834938/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.2539608-98433-264689897834938/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_WNpxt8/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:23,616 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:23,616 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullBareWord', 'val': 'dword:11111111'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]", "key": "FullBareWord", "val": "dword:11111111", "verb": "add"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.45275-98433-51349200643885/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.45275-98433-51349200643885/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.45275-98433-51349200643885/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_yfUYBn/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:23,809 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:23,809 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE]'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE]", "verb": "chk"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.635128-98433-219441299935509/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.635128-98433-219441299935509/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.635128-98433-219441299935509/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_Hd9bt7/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:23,997 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:23,998 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\Common Files]', 'key': 'CloudConnectorConfigDir', 'val': '"/var/opt/vendor/install/CloudConnectorConfig"'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Common Files]", "key": "CloudConnectorConfigDir", "val": "\"/var/opt/vendor/install/CloudConnectorConfig\"", "verb": "chk"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.828-98433-10923738993061/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.828-98433-10923738993061/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629503.828-98433-10923738993061/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_RxXnju/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:24,184 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:24,184 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe]'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe]", "verb": "del"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.016672-98433-224180417967468/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.016672-98433-224180417967468/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.016672-98433-224180417967468/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_QAukxn/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:24,369 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:24,369 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'TreatAsSystem'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]", "key": "TreatAsSystem", "verb": "del"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.202057-98433-64616632877798/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.202057-98433-64616632877798/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.202057-98433-64616632877798/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_QJKCLl/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:24,555 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:24,555 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'System', 'val': 'dword:00000001'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]", "key": "System", "val": "dword:00000001", "verb": "del"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.388392-98433-79589438745569/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.388392-98433-79589438745569/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.388392-98433-79589438745569/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_Tgiq6h/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:24,742 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:24,743 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe]', 'new_hkey': '[HKEY_LOCAL_MACHINE\\HelloWorld\\UpdateMe]'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe]", "new_hkey": "[HKEY_LOCAL_MACHINE\\HelloWorld\\UpdateMe]", "verb": "upd"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.575139-98433-279284899723763/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.575139-98433-279284899723763/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.575139-98433-279284899723763/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_LbT14j/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:24,933 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:24,933 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'NodeJS', 'new_key': 'nodejs'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]", "key": "NodeJS", "new_key": "nodejs", "verb": "upd"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.763438-98433-220570993243624/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.763438-98433-220570993243624/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.763438-98433-220570993243624/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_atqvWn/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:25,120 p=98429 u=mersenne n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: SyntaxError: invalid syntax
+2021-02-06 17:38:25,120 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'nodejs', 'new_val': '"/var/opt/vendor/install/NodeJS/bin/node"'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]", "key": "nodejs", "new_val": "\"/var/opt/vendor/install/NodeJS/bin/node\"", "verb": "upd"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.9518652-98433-171770775661976/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.9518652-98433-171770775661976/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.9518652-98433-171770775661976/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_TYpXyZ/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2021-02-06 17:38:25,124 p=98429 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2021-02-06 17:38:25,124 p=98429 u=mersenne n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   

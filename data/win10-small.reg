@@ -1,0 +1,86 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE]
+
+[HKEY_LOCAL_MACHINE\BCD00000000]
+
+[HKEY_LOCAL_MACHINE\BCD00000000\Description]
+"KeyName"="BCD00000000"
+"System"=dword:00000001
+"TreatAsSystem"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\BCD00000000\DeleteMe]
+"KeyName"="BCD00000000"
+"System"=dword:00000001
+"TreatAsSystem"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\BCD00000000\DeleteMe2]
+"KeyName"="BCD00000000"
+"System"=dword:00000001
+"TreatAsSystem"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe]
+"KeyName"="BCD00000000"
+"System"=dword:00000001
+"TreatAsSystem"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]
+"KeyName"="BCD00000000"
+"System"=dword:00000001
+"TreatAsSystem"=dword:00000001
+"NodeJS"="/Users/eilenberg/.nvm/versions/node/v14.15.4/bin/node"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\_V2Providers\{2a32a3f9-ee0c-40ff-8a75-e1e747d15b1f}]
+"InstallType"=dword:00000001
+"ProviderType"=dword:00000000
+"ApplicationIdentity"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,\
+  6f,00,6f,00,74,00,25,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,\
+  00,5c,00,77,00,65,00,76,00,74,00,73,00,76,00,63,00,2e,00,64,00,6c,00,6c,00,\
+  00,00
+
+[HKEY_LOCAL_MACHINE\COMPONENTS\CanonicalData\Catalogs\010d9a33d371c48e36c0fe5e30c7b20abe3ecc4ad6c3567cb349676791b960cc]
+"c!microsoft-w..yment041130_31bf3856ad364e35_10.0.18362.1316_685a700d0e197401"=hex:
+"c!dual_netnb.inf_31bf3856ad364e35_10.0.18362.1_d8c31c666c5e6dfd"=hex:
+"c!dual_netpacer.inf_31bf3856ad364e35_10.0.18362.1_cb190ea181a2bf9a"=hex:
+
+[HKEY_LOCAL_MACHINE\COMPONENTS\CanonicalData\Deployments\00286d1ecd7..bbfc07e11bc_31bf3856ad364e35_4.0.15788.485_de49fc9294854304]
+"appid"=hex:30,30,32,38,36,64,31,65,63,64,37,63,38,63,30,30,34,38,61,66,30,62,\
+  62,66,63,30,37,65,31,31,62,63,2c,20,43,75,6c,74,75,72,65,3d,6e,65,75,74,72,\
+  61,6c,2c,20,56,65,72,73,69,6f,6e,3d,34,2e,30,2e,31,35,37,38,38,2e,34,38,35,\
+  2c,20,50,75,62,6c,69,63,4b,65,79,54,6f,6b,65,6e,3d,33,31,62,66,33,38,35,36,\
+  61,64,33,36,34,65,33,35,2c,20,50,72,6f,63,65,73,73,6f,72,41,72,63,68,69,74,\
+  65,63,74,75,72,65,3d,61,6d,64,36,34,2c,20,76,65,72,73,69,6f,6e,53,63,6f,70,\
+  65,3d,4e,6f,6e,53,78,53
+"CatalogThumbprint"="5dd3d7029b17f6f28442d6aed19f7643fe769fc00b161aba51d671a15c8760d0"
+"p!CBS_package_3_for_kb4586878~31bf3856ad364e35~amd64~~10.0.4300.1._e3d97e9dd248e34b"=hex:4e,\
+  00,00,00,01,00,00,00,50,61,63,6b,61,67,65,5f,33,5f,66,6f,72,5f,4b,42,34,35,\
+  38,36,38,37,38,7e,33,31,62,66,33,38,35,36,61,64,33,36,34,65,33,35,7e,61,6d,\
+  64,36,34,7e,7e,31,30,2e,30,2e,34,33,30,30,2e,31,2e,34,35,38,36,38,37,38,2d,\
+  39,37,5f,6e,65,75,74,72,61,6c,38
+"s!CBS_package_3_for_kb4586878~31bf3856ad364e35~amd64~~10.0.4300.1._e3d97e9dd248e34b"=hex:4e,\
+  00,00,00,00,00,00,00,50,61,63,6b,61,67,65,5f,33,5f,66,6f,72,5f,4b,42,34,35,\
+  38,36,38,37,38,7e,33,31,62,66,33,38,35,36,61,64,33,36,34,65,33,35,7e,61,6d,\
+  64,36,34,7e,7e,31,30,2e,30,2e,34,33,30,30,2e,31,2e,34,35,38,36,38,37,38,2d,\
+  39,37,5f,6e,65,75,74,72,61,6c
+"i!CBS_package_3_for_kb4586878~31bf3856ad364e35~amd64~~10.0.4300.1._e3d97e9dd248e34b"=hex:4e,\
+  00,00,00,01,00,00,00,50,61,63,6b,61,67,65,5f,33,5f,66,6f,72,5f,4b,42,34,35,\
+  38,36,38,37,38,7e,33,31,62,66,33,38,35,36,61,64,33,36,34,65,33,35,7e,61,6d,\
+  64,36,34,7e,7e,31,30,2e,30,2e,34,33,30,30,2e,31,2e,34,35,38,36,38,37,38,2d,\
+  39,37,5f,6e,65,75,74,72,61,6c,38
+
+[HKEY_LOCAL_MACHINE\COMPONENTS\DerivedData\VersionedIndex\10.0.18362.1310 (WinBuild.160101.0800)\ComponentFamilies\amd64_microsoft-windows-l..overy-adm.resources_31bf3856ad364e35_en-us_4e5a1ed241514cbc\v!10.0.18362.1]
+@=dword:0000024e
+
+
+[HKEY_LOCAL_MACHINE\COMPONENTS\DerivedData\VersionedIndex\10.0.18362.1310 (WinBuild.160101.0800)\ComponentFamilies\amd64_microsoft-windows-l..st-abovelockapphost_31bf3856ad364e35_none_d712379d5a8edb52]
+"f256!abovelockapphost.dll"=hex:62,00,78,00,35,00,74,00,45,00,61,00,64,00,4c,\
+  00,56,00,66,00,2f,00,51,00,6c,00,30,00,5a,00,66,00,55,00,72,00,2b,00,4e,00,\
+  4e,00,6a,00,7a,00,43,00,75,00,2b,00,58,00,4f,00,4a,00,75,00,61,00,2f,00,78,\
+  00,78,00,5a,00,43,00,68,00,45,00,68,00,6d,00,64,00,43,00,6f,00,3d,00,21,00,\
+  31,00,30,00,2e,00,30,00,2e,00,31,00,38,00,33,00,36,00,32,00,2e,00,39,00,35,\
+  00,39,00,23,00,6c,00,59,00,70,00,42,00,62,00,50,00,30,00,4f,00,46,00,51,00,\
+  5a,00,37,00,4a,00,69,00,62,00,72,00,74,00,6d,00,2f,00,35,00,52,00,6d,00,55,\
+  00,6b,00,5a,00,2b,00,48,00,46,00,58,00,38,00,34,00,50,00,4d,00,31,00,6c,00,\
+  4c,00,79,00,6d,00,73,00,52,00,42,00,6b,00,4d,00,3d,00,21,00,31,00,30,00,2e,\
+  00,30,00,2e,00,31,00,38,00,33,00,36,00,32,00,2e,00,31,00,33,00,31,00,36,00,\
+  23,00
