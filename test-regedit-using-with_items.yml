@@ -60,6 +60,13 @@
           val: '"/var/opt/vendor/install/CloudConnectorConfig"',
         }
         # =========================================================================
+        # Test Case CHK-03: Check return of non-existing HKEY
+        # =========================================================================
+        - {
+          verb: chk,
+          hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DoesNotExist]',
+        }
+        # =========================================================================
         # Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)
         # =========================================================================
         - {

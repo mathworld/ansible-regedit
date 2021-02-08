@@ -9,26 +9,14 @@ Windows Registry Editor Version 5.00
 "System"=dword:00000001
 "TreatAsSystem"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\BCD00000000\DeleteMe]
-"KeyName"="BCD00000000"
-"System"=dword:00000001
-"TreatAsSystem"=dword:00000001
-
 [HKEY_LOCAL_MACHINE\BCD00000000\DeleteMe2]
 "KeyName"="BCD00000000"
-"System"=dword:00000001
-"TreatAsSystem"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe]
-"KeyName"="BCD00000000"
-"System"=dword:00000001
-"TreatAsSystem"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]
 "KeyName"="BCD00000000"
 "System"=dword:00000001
 "TreatAsSystem"=dword:00000001
-"NodeJS"="/Users/eilenberg/.nvm/versions/node/v14.15.4/bin/node"
+"nodejs"="/var/opt/vendor/install/NodeJS/bin/node"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\_V2Providers\{2a32a3f9-ee0c-40ff-8a75-e1e747d15b1f}]
 "InstallType"=dword:00000001
@@ -71,7 +59,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\COMPONENTS\DerivedData\VersionedIndex\10.0.18362.1310 (WinBuild.160101.0800)\ComponentFamilies\amd64_microsoft-windows-l..overy-adm.resources_31bf3856ad364e35_en-us_4e5a1ed241514cbc\v!10.0.18362.1]
 @=dword:0000024e
 
-
 [HKEY_LOCAL_MACHINE\COMPONENTS\DerivedData\VersionedIndex\10.0.18362.1310 (WinBuild.160101.0800)\ComponentFamilies\amd64_microsoft-windows-l..st-abovelockapphost_31bf3856ad364e35_none_d712379d5a8edb52]
 "f256!abovelockapphost.dll"=hex:62,00,78,00,35,00,74,00,45,00,61,00,64,00,4c,\
   00,56,00,66,00,2f,00,51,00,6c,00,30,00,5a,00,66,00,55,00,72,00,2b,00,4e,00,\
@@ -84,3 +71,13 @@ Windows Registry Editor Version 5.00
   4c,00,79,00,6d,00,73,00,52,00,42,00,6b,00,4d,00,3d,00,21,00,31,00,30,00,2e,\
   00,30,00,2e,00,31,00,38,00,33,00,36,00,32,00,2e,00,31,00,33,00,31,00,36,00,\
   23,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\DummyHKEY]
+"FullName"="Harlequin Joost"
+"FullBareWord"=dword:11111111
+
+[HKEY_LOCAL_MACHINE\HelloWorld\UpdateMe]
+"KeyName"="BCD00000000"
+"System"=dword:00000001
+"TreatAsSystem"=dword:00000001
+

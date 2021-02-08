@@ -748,3 +748,436 @@ https://docs.ansible.com/ansible/2.10/reference_appendices/interpreter_discovery
 2021-02-06 17:38:25,120 p=98429 u=mersenne n=ansible | failed: [127.0.0.1] (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'nodejs', 'new_val': '"/var/opt/vendor/install/NodeJS/bin/node"'}) => {"ansible_loop_var": "item", "changed": false, "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]", "key": "nodejs", "new_val": "\"/var/opt/vendor/install/NodeJS/bin/node\"", "verb": "upd"}, "module_stderr": "Traceback (most recent call last):\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.9518652-98433-171770775661976/AnsiballZ_regedit.py\", line 102, in <module>\n    _ansiballz_main()\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.9518652-98433-171770775661976/AnsiballZ_regedit.py\", line 94, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/Users/mersenne/.ansible/tmp/ansible-tmp-1612629504.9518652-98433-171770775661976/AnsiballZ_regedit.py\", line 40, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.regedit', init_globals=None, run_name='__main__', alter_sys=True)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 182, in run_module\n    mod_name, loader, code, fname = _get_module_details(mod_name)\n  File \"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py\", line 119, in _get_module_details\n    code = loader.get_code(mod_name)\n  File \"/var/folders/mx/y0nktkpn5t592mzj7lrw0sfm0000gn/T/ansible_regedit_payload_TYpXyZ/ansible_regedit_payload.zip/ansible/modules/regedit.py\", line 191\n    v = [f\"{val}\\\\\"]\n                  ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
 2021-02-06 17:38:25,124 p=98429 u=mersenne n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
 2021-02-06 17:38:25,124 p=98429 u=mersenne n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-02-08 16:50:10,678 p=5224 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] *********************************************************************************************************************************************************************
+2021-02-08 16:50:10,693 p=5224 u=mersenne n=ansible | TASK [Test cases for modifying registry file.] *****************************************************************************************************************************************************************
+2021-02-08 16:50:10,930 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]", "verb": "add"}, "msg": "Failed to connect to the host via ssh: Warning: Permanently added 'localhost' (ECDSA) to the list of known hosts.\r\nmersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,013 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullName', 'val': '"Harlequin Joost"'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]", "key": "FullName", "val": "\"Harlequin Joost\"", "verb": "add"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,099 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullBareWord', 'val': 'dword:11111111'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]", "key": "FullBareWord", "val": "dword:11111111", "verb": "add"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,194 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE]'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE]", "verb": "chk"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,296 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\Common Files]', 'key': 'CloudConnectorConfigDir', 'val': '"/var/opt/vendor/install/CloudConnectorConfig"'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Common Files]", "key": "CloudConnectorConfigDir", "val": "\"/var/opt/vendor/install/CloudConnectorConfig\"", "verb": "chk"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,393 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe]'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe]", "verb": "del"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,495 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'TreatAsSystem'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]", "key": "TreatAsSystem", "verb": "del"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,603 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'System', 'val': 'dword:00000001'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]", "key": "System", "val": "dword:00000001", "verb": "del"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,694 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe]', 'new_hkey': '[HKEY_LOCAL_MACHINE\\HelloWorld\\UpdateMe]'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe]", "new_hkey": "[HKEY_LOCAL_MACHINE\\HelloWorld\\UpdateMe]", "verb": "upd"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,803 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'NodeJS', 'new_key': 'nodejs'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]", "key": "NodeJS", "new_key": "nodejs", "verb": "upd"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,893 p=5224 u=mersenne n=ansible | failed: [localhost] (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'nodejs', 'new_val': '"/var/opt/vendor/install/NodeJS/bin/node"'}) => {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]", "key": "nodejs", "new_val": "\"/var/opt/vendor/install/NodeJS/bin/node\"", "verb": "upd"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}
+2021-02-08 16:50:11,897 p=5224 u=mersenne n=ansible | fatal: [localhost]: UNREACHABLE! => {"changed": false, "msg": "All items completed", "results": [{"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]", "verb": "add"}, "msg": "Failed to connect to the host via ssh: Warning: Permanently added 'localhost' (ECDSA) to the list of known hosts.\r\nmersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]", "key": "FullName", "val": "\"Harlequin Joost\"", "verb": "add"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]", "key": "FullBareWord", "val": "dword:11111111", "verb": "add"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE]", "verb": "chk"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Common Files]", "key": "CloudConnectorConfigDir", "val": "\"/var/opt/vendor/install/CloudConnectorConfig\"", "verb": "chk"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe]", "verb": "del"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]", "key": "TreatAsSystem", "verb": "del"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]", "key": "System", "val": "dword:00000001", "verb": "del"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe]", "new_hkey": "[HKEY_LOCAL_MACHINE\\HelloWorld\\UpdateMe]", "verb": "upd"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]", "key": "NodeJS", "new_key": "nodejs", "verb": "upd"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}, {"ansible_loop_var": "item", "item": {"hkey": "[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]", "key": "nodejs", "new_val": "\"/var/opt/vendor/install/NodeJS/bin/node\"", "verb": "upd"}, "msg": "Failed to connect to the host via ssh: mersenne@localhost: Permission denied (publickey,password,keyboard-interactive).", "unreachable": true}]}
+2021-02-08 16:50:11,898 p=5224 u=mersenne n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2021-02-08 16:50:11,898 p=5224 u=mersenne n=ansible | localhost                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-08 16:50:46,548 p=5496 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 16:50:46,552 p=5496 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 16:50:46,667 p=5496 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] *********************************************************************************************************************************************************************
+2021-02-08 16:50:46,678 p=5496 u=mersenne n=ansible | TASK [Test cases for modifying registry file.] *****************************************************************************************************************************************************************
+2021-02-08 16:50:47,117 p=5496 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]'})
+2021-02-08 16:50:47,348 p=5496 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullName', 'val': '"Harlequin Joost"'})
+2021-02-08 16:50:47,585 p=5496 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullBareWord', 'val': 'dword:11111111'})
+2021-02-08 16:50:47,822 p=5496 u=mersenne n=ansible | ok: [localhost] => (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE]'})
+2021-02-08 16:50:48,053 p=5496 u=mersenne n=ansible | ok: [localhost] => (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\Common Files]', 'key': 'CloudConnectorConfigDir', 'val': '"/var/opt/vendor/install/CloudConnectorConfig"'})
+2021-02-08 16:50:48,286 p=5496 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe]'})
+2021-02-08 16:50:48,522 p=5496 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'TreatAsSystem'})
+2021-02-08 16:50:48,755 p=5496 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'System', 'val': 'dword:00000001'})
+2021-02-08 16:50:48,988 p=5496 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe]', 'new_hkey': '[HKEY_LOCAL_MACHINE\\HelloWorld\\UpdateMe]'})
+2021-02-08 16:50:49,229 p=5496 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'NodeJS', 'new_key': 'nodejs'})
+2021-02-08 16:50:49,463 p=5496 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'nodejs', 'new_val': '"/var/opt/vendor/install/NodeJS/bin/node"'})
+2021-02-08 16:50:49,474 p=5496 u=mersenne n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2021-02-08 16:50:49,474 p=5496 u=mersenne n=ansible | localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-08 19:40:26,123 p=16351 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:40:26,129 p=16351 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:40:26,313 p=16351 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] *********************************************************************************************************************************************************************
+2021-02-08 19:40:26,324 p=16351 u=mersenne n=ansible | TASK [Test cases for modifying registry file.] *****************************************************************************************************************************************************************
+2021-02-08 19:40:26,723 p=16351 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]'})
+2021-02-08 19:40:26,947 p=16351 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullName', 'val': '"Harlequin Joost"'})
+2021-02-08 19:40:27,162 p=16351 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'add', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\DummyHKEY]', 'key': 'FullBareWord', 'val': 'dword:11111111'})
+2021-02-08 19:40:27,373 p=16351 u=mersenne n=ansible | ok: [localhost] => (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE]'})
+2021-02-08 19:40:27,600 p=16351 u=mersenne n=ansible | ok: [localhost] => (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\SOFTWARE\\Common Files]', 'key': 'CloudConnectorConfigDir', 'val': '"/var/opt/vendor/install/CloudConnectorConfig"'})
+2021-02-08 19:40:27,818 p=16351 u=mersenne n=ansible | ok: [localhost] => (item={'verb': 'chk', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DoesNotExist]'})
+2021-02-08 19:40:28,035 p=16351 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe]'})
+2021-02-08 19:40:28,246 p=16351 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'TreatAsSystem'})
+2021-02-08 19:40:28,463 p=16351 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'del', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\DeleteMe2]', 'key': 'System', 'val': 'dword:00000001'})
+2021-02-08 19:40:28,681 p=16351 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe]', 'new_hkey': '[HKEY_LOCAL_MACHINE\\HelloWorld\\UpdateMe]'})
+2021-02-08 19:40:28,907 p=16351 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'NodeJS', 'new_key': 'nodejs'})
+2021-02-08 19:40:29,139 p=16351 u=mersenne n=ansible | changed: [localhost] => (item={'verb': 'upd', 'hkey': '[HKEY_LOCAL_MACHINE\\BCD00000000\\UpdateMe2]', 'key': 'nodejs', 'new_val': '"/var/opt/vendor/install/NodeJS/bin/node"'})
+2021-02-08 19:40:29,150 p=16351 u=mersenne n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2021-02-08 19:40:29,150 p=16351 u=mersenne n=ansible | localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-08 19:56:46,052 p=18481 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:56:46,058 p=18481 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:56:46,172 p=18481 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 14, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+        debug:
+             ^ here
+
+2021-02-08 19:57:18,320 p=18616 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:57:18,324 p=18616 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:57:18,387 p=18616 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 16, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+          debug:
+               ^ here
+
+2021-02-08 19:58:06,457 p=18766 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:58:06,460 p=18766 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:58:06,524 p=18766 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 62, column 5, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DoesNotExist]'
+    register: result
+    ^ here
+
+2021-02-08 19:58:16,614 p=18883 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:58:16,618 p=18883 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:58:16,680 p=18883 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 17, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+           debug:
+                ^ here
+
+2021-02-08 19:58:27,011 p=19000 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:58:27,014 p=19000 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:58:27,077 p=19000 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 15, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+         debug:
+              ^ here
+
+2021-02-08 19:58:39,331 p=19122 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:58:39,335 p=19122 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:58:39,398 p=19122 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 15, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+         debug:
+              ^ here
+
+2021-02-08 19:59:15,326 p=19254 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:59:15,329 p=19254 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:59:15,393 p=19254 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 62, column 5, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DoesNotExist]'
+    register: result
+    ^ here
+
+2021-02-08 19:59:22,810 p=19373 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:59:22,814 p=19373 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:59:22,879 p=19373 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 13, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+       debug:
+            ^ here
+
+2021-02-08 19:59:30,279 p=19493 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:59:30,283 p=19493 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:59:30,345 p=19493 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 15, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+         debug:
+              ^ here
+
+2021-02-08 19:59:36,242 p=19606 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 19:59:36,245 p=19606 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 19:59:36,304 p=19606 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 17, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+           debug:
+                ^ here
+
+2021-02-08 20:00:58,409 p=19774 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 20:00:58,414 p=19774 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 20:00:58,497 p=19774 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+      - debug:
+      ^ here
+
+2021-02-08 20:01:16,282 p=19895 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 20:01:16,286 p=19895 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 20:01:16,350 p=19895 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 16, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+        - debug:
+               ^ here
+
+2021-02-08 20:03:58,256 p=20214 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 20:03:58,260 p=20214 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 20:03:58,340 p=20214 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+      - debug:
+      ^ here
+
+2021-02-08 20:04:08,242 p=20331 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 20:04:08,246 p=20331 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 20:04:08,316 p=20331 u=mersenne n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/Users/mersenne/projects/ansible-regedit/test-regedit-disobeying-dry.yml': line 63, column 14, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      register: result
+        debug:
+             ^ here
+
+2021-02-08 20:04:31,448 p=20456 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 20:04:31,452 p=20456 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 20:04:31,590 p=20456 u=mersenne n=ansible | playbook: test-regedit-disobeying-dry.yml
+2021-02-08 20:04:39,683 p=20571 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 20:04:39,686 p=20571 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 20:04:39,807 p=20571 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] *********************************************************************************************************************************************************************
+2021-02-08 20:04:39,821 p=20571 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] ***************************************************************************************************************************************************************************
+2021-02-08 20:04:40,219 p=20571 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:04:40,222 p=20571 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] ************************************************************************************************************************************
+2021-02-08 20:04:40,455 p=20571 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:04:40,459 p=20571 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] **********************************************************************************************************************************
+2021-02-08 20:04:40,688 p=20571 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:04:40,692 p=20571 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] ***************************************************************************************************************************************************************
+2021-02-08 20:04:40,925 p=20571 u=mersenne n=ansible | ok: [localhost]
+2021-02-08 20:04:40,928 p=20571 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] **********************************************************************************************************************************************
+2021-02-08 20:04:41,164 p=20571 u=mersenne n=ansible | ok: [localhost]
+2021-02-08 20:04:41,167 p=20571 u=mersenne n=ansible | TASK [Test Case CHK-03:Check return of non-existing HKEY] ******************************************************************************************************************************************************
+2021-02-08 20:04:41,406 p=20571 u=mersenne n=ansible | ok: [localhost]
+2021-02-08 20:04:41,411 p=20571 u=mersenne n=ansible | TASK [debug] ***************************************************************************************************************************************************************************************************
+2021-02-08 20:04:41,438 p=20571 u=mersenne n=ansible | ok: [localhost] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "message": "HKEY does not exist.",
+        "original_message": ""
+    }
+}
+2021-02-08 20:04:41,442 p=20571 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] **********************************************************************************************************************************************
+2021-02-08 20:04:41,678 p=20571 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:04:41,681 p=20571 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ****************************************************************************************************************************************************************
+2021-02-08 20:04:41,915 p=20571 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:04:41,919 p=20571 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ******************************************************************************************************************************
+2021-02-08 20:04:42,146 p=20571 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:04:42,150 p=20571 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] **********************************************************************************************************************************************************************
+2021-02-08 20:04:42,382 p=20571 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:04:42,386 p=20571 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ****************************************************************************************************************************************************************************
+2021-02-08 20:04:42,621 p=20571 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:04:42,625 p=20571 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] **************************************************************************************************************************************************************************
+2021-02-08 20:04:42,891 p=20571 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:04:42,898 p=20571 u=mersenne n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2021-02-08 20:04:42,898 p=20571 u=mersenne n=ansible | localhost                  : ok=13   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-02-08 20:16:59,412 p=21694 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 20:16:59,418 p=21694 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 20:16:59,590 p=21694 u=mersenne n=ansible | playbook: test-regedit-disobeying-dry.yml
+2021-02-08 20:17:03,924 p=21804 u=mersenne n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-02-08 20:17:03,927 p=21804 u=mersenne n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2021-02-08 20:17:04,047 p=21804 u=mersenne n=ansible | PLAY [A demo of modifying a registry file] *********************************************************************************************************************************************************************
+2021-02-08 20:17:04,059 p=21804 u=mersenne n=ansible | TASK [Test Case ADD-01: Add an HKEY] ***************************************************************************************************************************************************************************
+2021-02-08 20:17:04,454 p=21804 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:17:04,458 p=21804 u=mersenne n=ansible | TASK [Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"] ************************************************************************************************************************************
+2021-02-08 20:17:04,690 p=21804 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:17:04,694 p=21804 u=mersenne n=ansible | TASK [Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword] **********************************************************************************************************************************
+2021-02-08 20:17:04,929 p=21804 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:17:04,932 p=21804 u=mersenne n=ansible | TASK [Test Case CHK-01: Check if an HKEY exists] ***************************************************************************************************************************************************************
+2021-02-08 20:17:05,162 p=21804 u=mersenne n=ansible | ok: [localhost]
+2021-02-08 20:17:05,166 p=21804 u=mersenne n=ansible | TASK [Test Case CHK-02: Check if an HKEY kv-pair exists (is set)] **********************************************************************************************************************************************
+2021-02-08 20:17:05,388 p=21804 u=mersenne n=ansible | ok: [localhost]
+2021-02-08 20:17:05,391 p=21804 u=mersenne n=ansible | TASK [Test Case CHK-03:Check return of non-existing HKEY] ******************************************************************************************************************************************************
+2021-02-08 20:17:05,622 p=21804 u=mersenne n=ansible | ok: [localhost]
+2021-02-08 20:17:05,627 p=21804 u=mersenne n=ansible | TASK [debug] ***************************************************************************************************************************************************************************************************
+2021-02-08 20:17:05,658 p=21804 u=mersenne n=ansible | ok: [localhost] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "message": "HKEY does not exist.",
+        "original_message": ""
+    }
+}
+2021-02-08 20:17:05,661 p=21804 u=mersenne n=ansible | TASK [Test Case CHK-03:Check return of non-existing HKEY] ******************************************************************************************************************************************************
+2021-02-08 20:17:05,892 p=21804 u=mersenne n=ansible | ok: [localhost]
+2021-02-08 20:17:05,896 p=21804 u=mersenne n=ansible | TASK [debug] ***************************************************************************************************************************************************************************************************
+2021-02-08 20:17:05,922 p=21804 u=mersenne n=ansible | ok: [localhost] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "message": "HKEY kv-pair, as queried, was NOT found.",
+        "original_message": ""
+    }
+}
+2021-02-08 20:17:05,926 p=21804 u=mersenne n=ansible | TASK [Test Case CHK-03:Check return of non-existing HKEY] ******************************************************************************************************************************************************
+2021-02-08 20:17:06,163 p=21804 u=mersenne n=ansible | ok: [localhost]
+2021-02-08 20:17:06,167 p=21804 u=mersenne n=ansible | TASK [debug] ***************************************************************************************************************************************************************************************************
+2021-02-08 20:17:06,197 p=21804 u=mersenne n=ansible | ok: [localhost] => {
+    "msg": {
+        "changed": false,
+        "failed": false,
+        "message": "HKEY key has a different value than queried.",
+        "original_message": ""
+    }
+}
+2021-02-08 20:17:06,201 p=21804 u=mersenne n=ansible | TASK [Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)] **********************************************************************************************************************************************
+2021-02-08 20:17:06,440 p=21804 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:17:06,444 p=21804 u=mersenne n=ansible | TASK [Test Case DEL-02: Delete an HKEY kv-pair] ****************************************************************************************************************************************************************
+2021-02-08 20:17:06,674 p=21804 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:17:06,678 p=21804 u=mersenne n=ansible | TASK [Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified] ******************************************************************************************************************************
+2021-02-08 20:17:06,906 p=21804 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:17:06,910 p=21804 u=mersenne n=ansible | TASK [Test Case UPD-01: Update HKEY path] **********************************************************************************************************************************************************************
+2021-02-08 20:17:07,151 p=21804 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:17:07,155 p=21804 u=mersenne n=ansible | TASK [Test Case UPD-02: Update key] ****************************************************************************************************************************************************************************
+2021-02-08 20:17:07,386 p=21804 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:17:07,390 p=21804 u=mersenne n=ansible | TASK [Test Case UPD-03: Update value] **************************************************************************************************************************************************************************
+2021-02-08 20:17:07,622 p=21804 u=mersenne n=ansible | changed: [localhost]
+2021-02-08 20:17:07,628 p=21804 u=mersenne n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2021-02-08 20:17:07,629 p=21804 u=mersenne n=ansible | localhost                  : ok=17   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

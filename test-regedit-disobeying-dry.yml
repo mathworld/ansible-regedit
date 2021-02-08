@@ -52,6 +52,42 @@
         key: CloudConnectorConfigDir
         val: '"/var/opt/MicroStrategy/install/CloudConnectorConfig"'
     # =========================================================================
+    # Test Case CHK-03: Check return of non-existing HKEY
+    # =========================================================================
+    - name: 'Test Case CHK-03:Check return of non-existing HKEY'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DoesNotExist]'
+      register: result
+    - debug:
+        msg: "{{ result }}"
+    # =========================================================================
+    # Test Case CHK-04: Check return of existing HKEY, but non-existing key
+    # =========================================================================
+    - name: 'Test Case CHK-03:Check return of non-existing HKEY'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\Description]'
+        key: NonExistingKey
+      register: result
+    - debug:
+        msg: "{{ result }}"
+    # =========================================================================
+    # Test Case CHK-05: Check return of existing HKEY and key, but wrong value
+    # =========================================================================
+    - name: 'Test Case CHK-03:Check return of non-existing HKEY'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\Description]'
+        key: TreatAsSystem
+        val: 'dword:00000002'
+      register: result
+    - debug:
+        msg: "{{ result }}"
+    # =========================================================================
     # Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)
     # =========================================================================
     - name: 'Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)'
