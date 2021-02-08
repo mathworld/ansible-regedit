@@ -1,0 +1,109 @@
+---
+- name: A demo of modifying a registry file
+  hosts: localhost
+  gather_facts: false
+  vars:
+    regfile_path: data/win10-small.reg
+  tasks:
+    # =========================================================================
+    # Test Case ADD-01: Add an HKEY
+    # =========================================================================
+    - name: 'Test Case ADD-01: Add an HKEY'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: add
+        hkey: '[HKEY_LOCAL_MACHINE\SOFTWARE\DummyHKEY]'
+    # =========================================================================
+    # Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"
+    # =========================================================================
+    - name: 'Test Case ADD-02: Add a kv-pair to an HKEY where value is a "string"'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: add
+        hkey: '[HKEY_LOCAL_MACHINE\SOFTWARE\DummyHKEY]'
+        key: FullName
+        val: '"Harlequin Joost"'
+    # =========================================================================
+    # Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword
+    # =========================================================================
+    - name: 'Test Case ADD-03: Add a kv-pair to an HKEY where value is a bare dword'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: add
+        hkey: '[HKEY_LOCAL_MACHINE\SOFTWARE\DummyHKEY]'
+        key: FullBareWord
+        val: 'dword:11111111'
+    # =========================================================================
+    # Test Case CHK-01: Check if an HKEY exists
+    # =========================================================================
+    - name: 'Test Case CHK-01: Check if an HKEY exists'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\SOFTWARE]'
+    # =========================================================================
+    # Test Case CHK-02: Check if an HKEY kv-pair exists (is set)
+    # =========================================================================
+    - name: 'Test Case CHK-02: Check if an HKEY kv-pair exists (is set)'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\SOFTWARE\Common Files]'
+        key: CloudConnectorConfigDir
+        val: '"/var/opt/MicroStrategy/install/CloudConnectorConfig"'
+    # =========================================================================
+    # Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)
+    # =========================================================================
+    - name: 'Test Case DEL-01: Delete an HKEY (and any direct kv-pairs)'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: del
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DeleteMe]'
+    # =========================================================================
+    # Test Case DEL-02: Delete an HKEY kv-pair
+    # =========================================================================
+    - name: 'Test Case DEL-02: Delete an HKEY kv-pair'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: del
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DeleteMe2]'
+        key: TreatAsSystem
+    # =========================================================================
+    # Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified
+    # =========================================================================
+    - name: 'Test Case DEL-03: Delete an HKEY kv-pair only if the value is as specified'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: del
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DeleteMe2]'
+        key: System
+        val: 'dword:00000001'
+    # =========================================================================
+    # Test Case UPD-01: Update HKEY path
+    # =========================================================================
+    - name: 'Test Case UPD-01: Update HKEY path'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe]'
+        new_hkey: '[HKEY_LOCAL_MACHINE\HelloWorld\UpdateMe]'
+    # =========================================================================
+    # Test Case UPD-02: Update key
+    # =========================================================================
+    - name: 'Test Case UPD-02: Update key'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: NodeJS
+        new_key: nodejs
+    # =========================================================================
+    # Test Case UPD-03: Update value
+    # =========================================================================
+    - name: 'Test Case UPD-03: Update value'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: nodejs
+        new_val: '"/var/opt/vendor/install/NodeJS/bin/node"'
