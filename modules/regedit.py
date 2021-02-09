@@ -413,8 +413,11 @@ def upd_hkey(registry, hkey_old, hkey_new):
     :return: modified registry, result of rename: 'hkey_renamed' or 'hkey_notfound'
     """
     try:
-        registry[hkey_new] = registry.pop(hkey_old)
-        res = 'hkey_updated'
+        if hkey_old == hkey_new:
+            res = 'hkey_notupdated'
+        else:
+            registry[hkey_new] = registry.pop(hkey_old)
+            res = 'hkey_updated'
     except KeyError as kerr:
         res = 'hkey_notfound'
 
@@ -431,10 +434,13 @@ def upd_key(registry, hkey, key_old, key_new):
     :return: modified registry, result of rename: 'key_renamed' or 'key_notfound'
     """
     try:
-        val = registry[hkey][key_old]
-        del(registry[hkey][key_old])
-        registry[hkey][key_new] = val
-        res = 'key_updated'
+        if key_old == key_new:
+            res = 'key_notupdated'
+        else:
+            val = registry[hkey][key_old]
+            del(registry[hkey][key_old])
+            registry[hkey][key_new] = val
+            res = 'key_updated'
     except KeyError as kerr:
         res = 'key_notfound'
 
@@ -451,8 +457,12 @@ def upd_val(registry, hkey, key, val_new):
     :return: modified registry, result of rename: 'val_renamed' or 'val_notfound'
     """
     try:
-        registry[hkey][key] = val_new
-        res = 'val_updated'
+        val_old = registry[hkey][key]
+        if val_old == val_new:
+            res = 'val_notupdated'
+        else:
+            registry[hkey][key] = val_new
+            res = 'val_updated'
     except KeyError as kerr:
         res = 'key_notfound'
 
@@ -520,15 +530,18 @@ def main():
         },
         'upd_hkey': {
             'hkey_updated': 'The HKEY entry was renamed.',
+            'hkey_notupdated': 'The HKEY entry was not updated (old/new HKEY same).',
             'hkey_notfound': 'The HKEY was NOT found.',
         },
         'upd_key': {
             'key_updated': 'The key under HKEY was renamed.',
+            'key_notupdated': 'The key under HKEY was not updated (old/new key same).',
             'key_notfound': 'The key under HKEY was NOT found.',
         },
         'upd_val': {
             'val_updated': 'The value belonging to key under HKEY was renamed.',
-            'key_notfound': 'The key under HKEY was NOT found (implying that the value could not be updated).',
+            'val_notupdated': 'The value belonging to key under HKEY was not updated (old/new val same).',
+            'val_notfound': 'The key under HKEY was NOT found (implying that the value could not be updated).',
         },
     }
     res_modind = (
@@ -544,7 +557,6 @@ def main():
     )
     result = dict(
         changed=False,
-        original_message='',
         message=''
     )
 

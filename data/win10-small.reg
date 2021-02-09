@@ -9,8 +9,15 @@ Windows Registry Editor Version 5.00
 "System"=dword:00000001
 "TreatAsSystem"=dword:00000001
 
+[HKEY_LOCAL_MACHINE\BCD00000000\DeleteMe]
+"KeyName"="BCD00000000"
+"System"=dword:00000001
+"TreatAsSystem"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\BCD00000000\DeleteMe2]
 "KeyName"="BCD00000000"
+"System"=dword:00000001
+"TreatAsSystem"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]
 "KeyName"="BCD00000000"
@@ -71,10 +78,6 @@ Windows Registry Editor Version 5.00
   4c,00,79,00,6d,00,73,00,52,00,42,00,6b,00,4d,00,3d,00,21,00,31,00,30,00,2e,\
   00,30,00,2e,00,31,00,38,00,33,00,36,00,32,00,2e,00,31,00,33,00,31,00,36,00,\
   23,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\DummyHKEY]
-"FullName"="Harlequin Joost"
-"FullBareWord"=dword:11111111
 
 [HKEY_LOCAL_MACHINE\HelloWorld\UpdateMe]
 "KeyName"="BCD00000000"

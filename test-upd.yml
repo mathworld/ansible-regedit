@@ -1,0 +1,122 @@
+---
+- name: Test cases for updating a registry file
+  hosts: localhost
+  gather_facts: false
+  vars:
+    regfile_path: data/win10-small.reg
+  tasks:
+    # =========================================================================
+    # Test Case UPD-01.1: Update HKEY path where HKEY path exists new HKEY
+    # =========================================================================
+    - name: 'Test Case UPD-01.1: Update HKEY path where HKEY path exists (new HKEY)'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe]'
+        new_hkey: '[HKEY_LOCAL_MACHINE\HelloWorld\UpdateMe]'
+      register: result
+    - debug:
+        msg: "{{ result.message }} - expected result: 'changed'"
+    # =========================================================================
+    # Test Case UPD-01.2: Update HKEY path where HKEY path exists
+    # =========================================================================
+    - name: 'Test Case UPD-01.1: Update HKEY path where HKEY path exists (same HKEY)'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\HelloWorld\UpdateMe]'
+        new_hkey: '[HKEY_LOCAL_MACHINE\HelloWorld\UpdateMe]'
+      register: result
+    - debug:
+        msg: "{{ result.message }} - expected result: only 'ok'"
+    # =========================================================================
+    # Test Case UPD-02.1: Update HKEY path where HKEY path does not exist
+    # =========================================================================
+    - name: 'Test Case UPD-01.2: Update HKEY path where HKEY path does not exist'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe3]'
+        new_hkey: '[HKEY_LOCAL_MACHINE\HelloWorld\UpdateMe]'
+      register: result
+    - debug:
+        msg: "{{ result.message }} - expected result: only 'ok'"
+    # =========================================================================
+    # Test Case UPD-03.1: Update key
+    # =========================================================================
+    - name: 'Test Case UPD-03.1: Update key'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: NodeJS
+        new_key: nodejs
+      register: result
+    - debug:
+        msg: "{{ result.message }} - expected result: 'changed'"
+    # =========================================================================
+    # Test Case UPD-03.2: Update key a second time
+    # =========================================================================
+    - name: 'Test Case UPD-03.2: Update key once more'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: nodejs
+        new_key: nodejs
+      register: result
+    - debug:
+        msg: "{{ result.message }} - expected result: 'ok'"
+    # =========================================================================
+    # Test Case UPD-03.3: Update non-existing key
+    # =========================================================================
+    - name: 'Test Case UPD-03.3: Update key which is not there'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: knotenjs
+        new_key: nodejs
+      register: result
+    - debug:
+        msg: "{{ result.message }} - expected result: 'ok'"
+    # =========================================================================
+    # Test Case UPD-04.1: Update value (key is set in UPD-03.1)
+    # =========================================================================
+    - name: 'Test Case UPD-04.1: Update value'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: nodejs
+        new_val: '"/var/opt/vendor/install/NodeJS/bin/node"'
+      register: result
+    - debug:
+        msg: "{{ result.message }} - expected result: 'changed'"
+    # =========================================================================
+    # Test Case UPD-04.2: Update value again
+    # =========================================================================
+    - name: 'Test Case UPD-04.2: Update value once more'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: nodejs
+        new_val: '"/var/opt/vendor/install/NodeJS/bin/node"'
+      register: result
+    - debug:
+        msg: "{{ result.message }} - expected result: 'ok'"
+    # =========================================================================
+    # Test Case UPD-04.3: Update value which is alread
+    # =========================================================================
+    - name: 'Test Case UPD-04.2: Update value once more'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: nodejs
+        val: '"/var/opt/vendor/install/NodeJS/bin/npm"'
+        new_val: '"/var/opt/vendor/install/NodeJS/bin/node"'
+      register: result
+    - debug:
+        msg: "{{ result.message }} - expected result: 'ok' (val is not correct, safe update!)"
