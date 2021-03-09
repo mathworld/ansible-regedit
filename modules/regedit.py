@@ -15,10 +15,12 @@
 #                                       method and improving error handling.
 # LICENSE: GNU General Public License v3.0
 # ======================================================================
+from pathlib import Path
 
 from ansible.module_utils.basic import AnsibleModule
 import os
 import re
+import psutil
 
 DOCUMENTATION = '''
 ---
@@ -469,6 +471,19 @@ def upd_val(registry, hkey, key, val_new):
     return registry, res
 
 
+def _perm_string(octal):
+    result = ""
+    value_letters = [(4, "r"), (2, "w"), (1, "x")]
+    for digit in [int(n) for n in str(octal)]:
+        for value, letter in value_letters:
+            if digit >= value:
+                result += letter
+                digit -= value
+            else:
+                result += '-'
+    return result
+
+
 def main():
 
     module_params = {
@@ -493,7 +508,8 @@ def main():
         },
         'write_registry': {
             'write_registry_success': 'The (modified) registry was successfully dumped to file.',
-            'write_registry_filenotfound': 'The specified registry file could not be written to.',
+            'write_registry_filenotfound': 'The specified registry file was not found.',
+            'write_registry_file_not_writable': 'The specified registry file could not be written to.',
         },
         'add_hkey': {
             'hkey_added': 'HKEY successfully added.',
@@ -562,11 +578,6 @@ def main():
 
     if not module.check_mode:
 
-        if os.path.isfile(module.params['registry_filename']):
-            pass
-        else:
-            module.fail_json(msg=f"{module.params['registry_filename']} does not exist!")
-
         fin = module.params['registry_filename']
         fou = module.params['registry_filename_out'] if module.params['registry_filename_out'] != '' else fin
         hky = module.params['hkey']
@@ -576,6 +587,24 @@ def main():
         nhk = module.params['new_hkey']
         nke = module.params['new_key']
         nva = module.params['new_val']
+
+        if os.path.isfile(fin):
+            info = Path(fin)
+            file_u = info.owner()
+            file_g = info.group()
+            exec_u = psutil.Process().username()
+            perm_o = oct(os.stat(fin).st_mode)[-3:]
+            perm_s = _perm_string(perm_o)
+            if vrb == 'chk' and not os.access(fin, os.R_OK):
+                module.fail_json(
+                    msg=f"User '{exec_u}' cannot READ from '{perm_s} {file_u}:{file_g} {fin}' [permission error]"
+                )
+            if vrb in ('add', 'del', 'upd') and not os.access(fou, os.W_OK):
+                module.fail_json(
+                    msg=f"User '{exec_u}' cannot WRITE to '{perm_s} {file_u}:{file_g} {fin}' [permission error]"
+                )
+        else:
+            module.fail_json(msg=f"{fin} does not exist!")
 
         # -----------------------------
         # Read the registry file
