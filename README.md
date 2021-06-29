@@ -13,9 +13,15 @@ This Ansible module can be used to edit Windows registry like files of the form:
   00,00
 ```
 
-Four different verbs `chk`, `add`, `del`, and `upd` can be specified.
+Five different verbs `chk`, `get`, `add`, `del`, and `upd` can be specified.
 
-## Using `add` for adding HKEYs and key-value pairs
+Added/fixed 2021-06-28: 
+- NEW: `get` can be used to retrieve a value for a given hkey/key combination.
+- NEW: `ignore_case` can now be specified with all verbs. Valid arguments are: `yes`/`y` and `no`/`n`. 
+- NEW: `result.msgcode` can now be retrieved and used in subsequent processing logic. See the `func_rescode` structure in `main()`.
+- FIX: when using `upd` with a given HKEY and the key does not exist, the key/value pair will be set.
+
+## Using `add` t add HKEYs and key-value pairs
 
 (for preamble cf. `test-regedit-disobeying-dry.yml`)
 ```text
@@ -179,6 +185,143 @@ ok: [localhost] => {
 }
 ```
 
+Further techniques using `chk`:
+
+```text
+    # =========================================================================
+    # Test Case CHK-01.1: Check if exists: HKEY
+    # =========================================================================
+    - name: 'Test Case CHK-01: Check if HKEY exists'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\Description]'
+      register: result
+    - debug:
+        msg: "'{{ result.msgcode }}' => '{{ result.message }}'"
+
+    # =========================================================================
+    # Test Case CHK-01.2: Check if exists: HKEY/KEY
+    # =========================================================================
+    - name: 'Test Case CHK-02: Check if HKEY/KEY exists'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\Description]'
+        key: KeyName
+      register: result
+    - debug:
+        msg: "'{{ result.msgcode }}' => '{{ result.message }}'"
+
+    # =========================================================================
+    # Test Case CHK-01.3: Check if exists: HKEY/KEY/VAL
+    # =========================================================================
+    - name: 'Test Case CHK-03: Check if HKEY/KEY/VAL exists'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\Description]'
+        key: KeyName
+        val: '"BCD00000000"'
+      register: result
+    - debug:
+        msg: "'{{ result.msgcode }}' => '{{ result.message }}'"
+
+    # =========================================================================
+    # Test Case CHK-02.1: Check if exists: HKEY (ignoring case)
+    # =========================================================================
+    - name: 'Test Case CHK-01: Check if HKEY exists'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DESCRIPTION]'
+        ignore_case: "yes"
+      register: result
+    - debug:
+        msg: "'{{ result.msgcode }}' => '{{ result.message }}'"
+
+    # =========================================================================
+    # Test Case CHK-02.2: Check if exists: HKEY/KEY (ignoring case)
+    # =========================================================================
+    - name: 'Test Case CHK-02: Check if HKEY/KEY exists'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DESCRIPTION]'
+        key: KEYNAME
+        ignore_case: "yes"
+      register: result
+    - debug:
+        msg: "'{{ result.msgcode }}' => '{{ result.message }}'"
+
+    # =========================================================================
+    # Test Case CHK-02.3: Check if exists: HKEY/KEY/VAL (ignoring case)
+    # =========================================================================
+    - name: 'Test Case CHK-03: Check if HKEY/KEY/VAL exists'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: chk
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\DESCRIPTION]'
+        key: KEYNAME
+        val: '"bcd00000000"'
+        ignore_case: "yes"
+      register: result
+    - debug:
+        msg: "'{{ result.msgcode }}' => '{{ result.message }}'"
+```
+
+will result in:
+
+```text
+TASK [Test Case CHK-01: Check if HKEY exists] ************************************************************
+ok: [localhost]
+
+TASK [debug]************************************************************
+ok: [localhost] => {
+    "msg": "'hkey_exists' => 'HKEY exists (case-sensitive).'"
+}
+
+TASK [Test Case CHK-02: Check if HKEY/KEY exists] ************************************************************
+ok: [localhost]
+
+TASK [debug]************************************************************
+ok: [localhost] => {
+    "msg": "'hkey_k_key_exists' => 'HKEY/KEY-pair exists (case-sensitive).'"
+}
+
+TASK [Test Case CHK-03: Check if HKEY/KEY/VAL exists] ************************************************************
+ok: [localhost]
+
+TASK [debug] ************************************************************
+ok: [localhost] => {
+    "msg": "'hkey_kv_value_confirmed' => 'HKEY/KEY/VAL tuple exists (case-sensitive).'"
+}
+
+TASK [Test Case CHK-01: Check if HKEY exists] ************************************************************
+ok: [localhost]
+
+TASK [debug] ************************************************************
+ok: [localhost] => {
+    "msg": "'hkey_exists_ic' => 'HKEY exists (ignoring case).'"
+}
+
+TASK [Test Case CHK-02: Check if HKEY/KEY exists] ************************************************************
+ok: [localhost]
+
+TASK [debug]************************************************************
+ok: [localhost] => {
+    "msg": "'hkey_k_key_exists_ic' => 'HKEY/KEY-pair exists (ignoring case).'"
+}
+
+TASK [Test Case CHK-03: Check if HKEY/KEY/VAL exists] ************************************************************
+ok: [localhost]
+
+TASK [debug]************************************************************
+ok: [localhost] => {
+    "msg": "'hkey_kv_value_confirmed_ic' => 'HKEY/KEY/VAL tuple exists (ignoring case).'"
+}
+```
+
 ## Using `del` to remove HKEYs and key-value pairs
 ```text
     # =========================================================================
@@ -244,7 +387,51 @@ to specify the `new_hkey`. And, finally, when changing/updating a value we need 
     }
 ```
 
+## Using `upd` to create a new key-value entry and using `get` to retrieve it - once without and once with the `ignore_case` flag: 
+```text
+    # =========================================================================
+    # Test Case UPD-01.1: Update a HKEY/KEY pair where the KEY does not yet
+    #                     exist and set it to a given value
+    # =========================================================================
+    - name: 'Test Case UPD-01: Set the value for given HKEY/KEY'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: upd
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: ThisKeyDidNotExistBeforeRun
+        new_val: ThisValueWasUpserted
+      register: result
+    - debug:
+        msg: "'{{ result.message }}' - expected result: changed and a new key/value pair"
 
+    # =========================================================================
+    # Test Case UPD-01.2: Retrieve the key/value set above
+    # =========================================================================
+    - name: 'Test Case GET-02: Get the value for given HKEY/KEY'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: get
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: ThisKeyDidNotExistBeforeRun
+      register: result
+    - debug:
+        msg: "'{{ result.message }}' - expected result: 'ThisValueWasUpserted'"
+
+    # =========================================================================
+    # Test Case UPD-01.3: Retrieve the key/value set above
+    # =========================================================================
+    - name: 'Test Case GET-03: Get the value for given HKEY/KEY but with IGNORE CASE flag'
+      regedit:
+        registry_filename: "{{ regfile_path }}"
+        verb: get
+        hkey: '[HKEY_LOCAL_MACHINE\BCD00000000\UpdateMe2]'
+        key: THISKEYDIDNOTEXISTBEFORERUN
+        ignore_case: "yes"
+      register: result
+    - debug:
+        msg: "'{{ result.message }}' - expected result: 'ThisValueWasUpserted'"
+
+```
 # Running it
 
 ```text

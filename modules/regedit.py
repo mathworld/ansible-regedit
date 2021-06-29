@@ -33,11 +33,7 @@ description:
 notes:
   - Enclose HKEYs and values in single 'quotes'
   - Values are either bare or enclosed within "double quotes"
-    E.g.
-    "MetaDataODBCDriverVersion"="3.52"       - use ==> val: '"3.52"'
-    "NumberOfNodesInCluster"=dword:00000001  - use ==> val: 'dword:00000001'
-    (see examples below)
-    
+
 options:
   registry_filename:
     description:
@@ -51,11 +47,11 @@ options:
     type: str
 
   verb:
-    description:
-      - 'chk' for checking the existence of entries (for sanity checking) 
-      - 'add' for adding HKEYs, keys and values 
-      - 'del' for removing HKEYs, keys and values 
-      - 'upd' for updating  HKEYs, keys and values 
+    description: Use
+        'chk' for checking the existence of entries (for sanity checking)
+        'add' for adding HKEYs, keys and values
+        'del' for removing HKEYs, keys and values
+        'upd' for updating  HKEYs, keys and values
         One verb value must be specified, otherwise this module will fail.
     type: str
     default: chk
@@ -79,23 +75,25 @@ options:
   new_hkey:
     description:
       - A Windows registry HKEY path, e.g. [HKEY_LOCAL_MACHINE\SOFTWARE\MacroStrategy]
-      - Use with verb 'upd' to chenge the HKEY path 
+      - Use with verb 'upd' to chenge the HKEY path
     type: str
 
   new_key:
     description:
       - A Windows registry HKEY path, e.g. [HKEY_LOCAL_MACHINE\SOFTWARE\MacroStrategy]
-      - Use with verb 'upd' to chenge the HKEY path 
+      - Use with verb 'upd' to chenge the HKEY path
     type: str
-    
+
   new_val:
     description:
       - A Windows registry HKEY path, e.g. [HKEY_LOCAL_MACHINE\SOFTWARE\MacroStrategy]
-      - Use with verb 'upd' to chenge the HKEY path 
+      - Use with verb 'upd' to chenge the HKEY path
     type: str
 author:
   - Julius Bauer (https://github.com/mathworld)
 '''
+
+
 EXAMPLES = '''
 ---
 - name: A demo of modifying a MSIReg.reg file
@@ -163,6 +161,12 @@ EXAMPLES = '''
 '''
 
 
+# =============================================================================
+#
+# Functions
+#
+# =============================================================================
+
 def read_registry(fn_reg):
     """
     Read the Windows registry file from disk into a multi-level dictionary.
@@ -174,6 +178,7 @@ def read_registry(fn_reg):
     pkv_b = re.compile(r'"(?P<KEY>.+)?"=(?P<VAL>.*)')
 
     registry = {}
+    registry_ci = {}
     preamble = ''
     try:
         with open(fn_reg, mode='r', encoding='utf8') as fh:
@@ -187,6 +192,7 @@ def read_registry(fn_reg):
             if line.startswith('[') and line.endswith(']'):
                 hkey = line
                 registry[hkey] = {}
+                registry_ci[hkey.lower()] = {}
                 continue
             elif mkv_m:
                 key = mkv_m.group('KEY')
@@ -201,19 +207,23 @@ def read_registry(fn_reg):
                     break
                 val = '\n'.join(v)
                 registry[hkey][key] = val
+                registry_ci[hkey.lower()][key.lower()] = val
                 continue
             elif mkv_q:
                 key = mkv_q.group('KEY')
                 val = mkv_q.group('VAL')
                 registry[hkey][key] = f'"{val}"'
+                registry_ci[hkey.lower()][key.lower()] = f'"{val}"'
                 continue
             elif mkv_b:
                 key = mkv_b.group('KEY')
                 val = mkv_b.group('VAL')
                 registry[hkey][key] = f'{val}'
+                registry_ci[hkey.lower()][key.lower()] = f'{val}'
                 continue
             elif line.startswith('@='):
                 registry[hkey]['@'] = line.split('=')[1]
+                registry_ci[hkey.lower()]['@'] = line.split('=')[1]
             elif len(line) == 0:
                 pass
         res = 'read_registry_success'
@@ -228,7 +238,7 @@ def read_registry(fn_reg):
     except FileNotFoundError as e:
         res = 'read_registry_filenotfound'
 
-    return registry, preamble, res
+    return registry, registry_ci, preamble, res
 
 
 def write_registry(fn_reg, preamble, registry):
@@ -272,7 +282,7 @@ def add_hkey(registry, hkey):
     :return: updated dictionary and result
     """
     res = 'hkey_already_exists'
-    if hkey not in registry.keys():
+    if not _in(hkey, registry.keys()):
         registry[hkey] = {}
         res = 'hkey_added'
 
@@ -289,7 +299,7 @@ def add_hkey_kv(registry, hkey, key, val):
     :return: updated dictionary and result
     """
 
-    if hkey not in registry.keys():
+    if not _in(hkey, registry.keys()):
         registry[hkey] = {}
 
     try:
@@ -302,20 +312,62 @@ def add_hkey_kv(registry, hkey, key, val):
     return registry, res
 
 
-def chk_hkey(registry, hkey):
+def chk_hkey(registry, registry_ci, hkey):
     """
     Check if hkey exists in the registry.
     :param registry: a multi-level dictionary as returned by read_registry(fn_reg)
+    :param registry_ci: a multi-level dictionary for case-insensitive lookups as returned by read_registry(fn_reg)
     :param hkey: a valid Windows registry hkey, e.g. [HKEY_LOCAL_MACHINE\\SOFTWARE\\MicroStrategy\\DSS Server]
-    :return: updated dictionary and result
+    :return: query result
     """
-    return 'hkey_exists' if hkey in registry.keys() else 'hkey_notexists'
+
+    global IGNORE_CASE
+    reg = registry
+
+    if IGNORE_CASE:
+        hkey = hkey.lower()
+        reg = registry_ci
+
+    if IGNORE_CASE:
+        return 'hkey_exists_ic' if _in(hkey, reg.keys()) else 'hkey_notexists_ic'
+    else:
+        return 'hkey_exists' if _in(hkey, reg.keys()) else 'hkey_notexists'
 
 
-def chk_hkey_kv(registry, hkey, key, val):
+def chk_hkey_k(registry, registry_ci, hkey, key):
+    """
+    Check if hkey-key pair exists in the registry.
+    :param registry: a multi-level dictionary as returned by read_registry(fn_reg)
+    :param registry_ci: a multi-level dictionary for case-insensitive lookups as returned by read_registry(fn_reg)
+    :param hkey: a valid Windows registry hkey, e.g. [HKEY_LOCAL_MACHINE\\SOFTWARE\\MicroStrategy\\DSS Server]
+    :param key: the key name
+    :return: query result
+    """
+
+    global IGNORE_CASE
+    reg = registry
+
+    if IGNORE_CASE:
+        hkey = hkey.lower()
+        key = key.lower()
+        reg = registry_ci
+
+    if _in(hkey, reg.keys()):
+        if _in(key, reg[hkey].keys()):
+            res = 'hkey_k_key_exists_ic' if IGNORE_CASE else  'hkey_k_key_exists'
+        else:
+            res = 'hkey_k_key_not_exists'
+    else:
+        res = 'hkey_notexists'
+
+    return res
+
+
+def chk_hkey_kv(registry, registry_ci, hkey, key, val):
     """
     Check if a key-value pair is set for a given registry hkey.
     :param registry: a multi-level dictionary as returned by read_registry(fn_reg)
+    :param registry_ci: a multi-level dictionary for case-insensitive lookups as returned by read_registry(fn_reg)
     :param hkey: a valid Windows registry hkey, e.g. [HKEY_LOCAL_MACHINE\\SOFTWARE\\MicroStrategy\\DSS Server]
     :param key: the key name
     :param val: the value of the corresponding key
@@ -327,11 +379,22 @@ def chk_hkey_kv(registry, hkey, key, val):
         'hkey_notexists': the queried hkey was not found. See if you're escaping the backslashes correctly?
         The registry file has single backslashes whereas double backslashes should be used within code.
     """
-    if hkey in registry.keys():
-        if key in registry[hkey].keys():
-            act_val = registry[hkey][key]
+
+    global IGNORE_CASE
+    reg = registry
+
+    if IGNORE_CASE:
+        hkey = hkey.lower()
+        key = key.lower()
+        val = val.lower()
+        reg = registry_ci
+
+    if _in(hkey, reg.keys()):
+        if _in(key, reg[hkey].keys()):
+            act_val = reg[hkey][key]
+            act_val = act_val.lower() if IGNORE_CASE else act_val
             if act_val == val:
-                res = 'hkey_kv_value_confirmed'
+                res = 'hkey_kv_value_confirmed_ic' if IGNORE_CASE else 'hkey_kv_value_confirmed'
             else:
                 res = 'hkey_kv_value_mismatch'
         else:
@@ -352,7 +415,7 @@ def del_hkey(registry, hkey):
         'hkey_removed': the hkey (and any direct descendants) was removed.
     """
     res = 'hkey_notremoved'
-    if hkey in registry.keys():
+    if _in(hkey, registry.keys()):
         del(registry[hkey])
         res = 'hkey_removed'
 
@@ -368,8 +431,8 @@ def del_hkey_k(registry, hkey, key):
     :return: updated dictionary and result
     """
 
-    if hkey in registry.keys():
-        if key in registry[hkey].keys():
+    if _in(hkey, registry.keys()):
+        if _in(key, registry[hkey].keys()):
             del(registry[hkey][key])
             res = 'hkey_k_removed'
         else:
@@ -390,9 +453,16 @@ def del_hkey_kv(registry, hkey, key, val):
     :param val: the value of the corresponding key
     :return: updated dictionary and result
     """
+    global IGNORE_CASE
+    # reg = registry
+    #
+    # if IGNORE_CASE:
+    #     hkey = hkey.lower()
+    #     key = key.lower()
+    #     reg = registry_ci
 
-    if hkey in registry.keys():
-        if key in registry[hkey].keys():
+    if _in(hkey, registry.keys()):
+        if _in(key, registry[hkey].keys()):
             if registry[hkey][key] == val:
                 del(registry[hkey][key])
                 res = 'hkey_kv_removed'
@@ -406,6 +476,31 @@ def del_hkey_kv(registry, hkey, key, val):
     return registry, res
 
 
+def get_hkey_k(registry, registry_ci, hkey, key):
+    """
+    Retrieve a value for a given hkey/key combo.
+    :param registry: a multi-level dictionary as returned by read_registry(fn_reg)
+    :param registry_ci: a multi-level dictionary for case-insensitive lookups as returned by read_registry(fn_reg)
+    :param hkey: a valid Windows registry hkey, e.g. [HKEY_LOCAL_MACHINE\\SOFTWARE\\MicroStrategy\\DSS Server]
+    :param key: the key name
+    :return: updated dictionary and result
+    """
+    global IGNORE_CASE
+    reg = registry
+
+    if IGNORE_CASE:
+        hkey = hkey.lower()
+        key = key.lower()
+        reg = registry_ci
+
+    if hkey in reg.keys():
+        res = reg[hkey].get(key, 'hkey_k_keynotfound')
+    else:
+        res = 'hkey_k_hkeynotfound'
+
+    return res
+
+
 def upd_hkey(registry, hkey_old, hkey_new):
     """
     Change/update hkey in the registry.
@@ -414,13 +509,14 @@ def upd_hkey(registry, hkey_old, hkey_new):
     :param hkey_new: new valid Windows registry hkey, e.g. [HKEY_LOCAL_MACHINE\\SOFTWARE\\MacroStrategy\\DSS Server]
     :return: modified registry, result of rename: 'hkey_renamed' or 'hkey_notfound'
     """
-    try:
+
+    if _in(hkey_old, registry.keys()):
         if hkey_old == hkey_new:
             res = 'hkey_notupdated'
         else:
             registry[hkey_new] = registry.pop(hkey_old)
             res = 'hkey_updated'
-    except KeyError as kerr:
+    else:
         res = 'hkey_notfound'
 
     return registry, res
@@ -435,15 +531,19 @@ def upd_key(registry, hkey, key_old, key_new):
     :param key_new: e.g. InstallationPath  (=/var/opt/Micro...)
     :return: modified registry, result of rename: 'key_renamed' or 'key_notfound'
     """
-    try:
-        if key_old == key_new:
-            res = 'key_notupdated'
-        else:
-            val = registry[hkey][key_old]
-            del(registry[hkey][key_old])
-            registry[hkey][key_new] = val
-            res = 'key_updated'
-    except KeyError as kerr:
+    if _in(hkey, registry.keys()):
+        if _in(key_old, registry[hkey].keys()):
+            if key_old == key_new:
+                res = 'key_notupdated'
+            else:
+                try:
+                    val = registry[hkey][key_old]
+                    del(registry[hkey][key_old])
+                    registry[hkey][key_new] = val
+                    res = 'key_updated'
+                except KeyError as kerr:
+                    res = 'key_update_fail'
+    else:
         res = 'key_notfound'
 
     return registry, res
@@ -451,26 +551,37 @@ def upd_key(registry, hkey, key_old, key_new):
 
 def upd_val(registry, hkey, key, val_new):
     """
-    Change/update value in the registry.
+    Change/update or set (if key does not exist) value in the registry.
     :param registry: a multi-level dictionary as returned by read_registry(fn_reg)
     :param hkey: a valid Windows registry hkey, e.g. [HKEY_LOCAL_MACHINE\\SOFTWARE\\MicroStrategy\\DSS Server]
     :param key: e.g. LogPath
     :param val_new: e.g. /var/opt/MacroStrategy/log
     :return: modified registry, result of rename: 'val_renamed' or 'val_notfound'
     """
-    try:
-        val_old = registry[hkey][key]
-        if val_old == val_new:
-            res = 'val_notupdated'
+
+    if _in(hkey, registry.keys()):
+        if _in(key, registry[hkey].keys()):
+            try:
+                val_old = registry[hkey][key]
+                if val_old == val_new:
+                    res = 'val_notupdated'
+                else:
+                    registry[hkey][key] = val_new
+                    res = 'val_updated'
+            except KeyError as kerr:
+                res = 'val_update_fail'
         else:
             registry[hkey][key] = val_new
-            res = 'val_updated'
-    except KeyError as kerr:
-        res = 'key_notfound'
+            res = 'val_key_set'
+    else:
+        res = 'hkey_notfound'
 
     return registry, res
 
 
+# =============================================================================
+# Helper function
+# =============================================================================
 def _perm_string(octal):
     result = ""
     value_letters = [(4, "r"), (2, "w"), (1, "x")]
@@ -484,10 +595,34 @@ def _perm_string(octal):
     return result
 
 
+# =============================================================================
+# Lookup Helper function
+# =============================================================================
+def _in(needle, haystack):
+    global IGNORE_CASE
+
+    if IGNORE_CASE:
+        needle = needle.lower()
+        haystack = [e.lower() for e in haystack]
+
+    return needle in haystack
+
+
+# =============================================================================
+# Where it all starts
+# =============================================================================
 def main():
 
+    global IGNORE_CASE
+
     module_params = {
-        "verb":                  {"default": 'chk', "choices": ['chk', 'add', 'del', 'upd'], "type": 'str'},
+        "verb": {"default": 'chk', "choices": [
+            'chk',
+            'add',
+            'del',
+            'get',
+            'upd'
+        ], "type": 'str'},
         "registry_filename":     {"required": True, "type": 'str'},
         "registry_filename_out": {"default": '', "type": 'str'},
         "hkey":                  {"required": True, "type": 'str'},
@@ -496,6 +631,10 @@ def main():
         "new_hkey":              {"default": '', "type": 'str'},
         "new_key":               {"default": '', "type": 'str'},
         "new_val":               {"default": '', "type": 'str'},
+        "ignore_case": {"default": 'no', "choices": [
+            'yes', 'y',
+            'no', 'n'
+        ], "type": 'str'},
 
     }
 
@@ -520,11 +659,20 @@ def main():
             'hkey_kv_already_exists': 'HKEY kv-pair already exists.',
         },
         'chk_hkey': {
-            'hkey_exists': 'HKEY exists.',
-            'hkey_notexists': 'HKEY does not exist.',
+            'hkey_exists': 'HKEY exists (case-sensitive).',
+            'hkey_exists_ic': 'HKEY exists (ignoring case).',
+            'hkey_notexists': 'HKEY does not exist (case-sensitive).',
+            'hkey_notexists_ic': 'HKEY does not exist (ignoring case).',
+        },
+        'chk_hkey_k': {
+            'hkey_k_key_exists': 'HKEY/KEY-pair exists (case-sensitive).',
+            'hkey_k_key_exists_ic': 'HKEY/KEY-pair exists (ignoring case).',
+            'hkey_k_key_not_exists': 'HKEY/KEY-pair, as queried, KEY was NOT found.',
+            'hkey_notexists': 'HKEY/KEY-pair, as queried, HKEY was NOT found.',
         },
         'chk_hkey_kv': {
-            'hkey_kv_value_confirmed': 'HKEY kv-pair, as queried, exists.',
+            'hkey_kv_value_confirmed': 'HKEY/KEY/VAL tuple exists (case-sensitive).',
+            'hkey_kv_value_confirmed_ic': 'HKEY/KEY/VAL tuple exists (ignoring case).',
             'hkey_kv_value_mismatch': 'HKEY key has a different value than queried.',
             'hkey_kv_key_not_exists': 'HKEY kv-pair, as queried, was NOT found.',
             'hkey_notexists': 'HKEY, as queried, NOT found.',
@@ -544,6 +692,10 @@ def main():
             'hkey_kv_keynotfound': 'The key under HKEY was not found.',
             'hkey_kv_hkeynotfound': 'The HKEY was NOT found.',
         },
+        'get_hkey_k': {
+            'hkey_k_keynotfound': 'The key under HKEY was NOT found.',
+            'hkey_k_hkeynotfound': 'The HKEY was NOT found.',
+        },
         'upd_hkey': {
             'hkey_updated': 'The HKEY entry was renamed.',
             'hkey_notupdated': 'The HKEY entry was not updated (old/new HKEY same).',
@@ -551,15 +703,19 @@ def main():
         },
         'upd_key': {
             'key_updated': 'The key under HKEY was renamed.',
+            'key_update_fail': 'The key under HKEY was NOT renamed (check hkey/key-casing).',
             'key_notupdated': 'The key under HKEY was not updated (old/new key same).',
             'key_notfound': 'The key under HKEY was NOT found.',
         },
         'upd_val': {
             'val_updated': 'The value belonging to key under HKEY was renamed.',
+            'val_update_fail': 'The value belonging to key under HKEY was NOT renamed (check hkey/key-casing).',
+            'val_key_set': 'The key was created and set to the requested value.',
             'val_notupdated': 'The value belonging to key under HKEY was not updated (old/new val same).',
-            'val_notfound': 'The key under HKEY was NOT found (implying that the value could not be updated).',
-        },
+            'hkey_notfound': 'The key under HKEY was NOT found (implying that the value could not be updated).',
+        }
     }
+
     res_modind = (
         'write_registry_success',
         'hkey_added',
@@ -569,24 +725,33 @@ def main():
         'hkey_kv_removed',
         'hkey_updated',
         'key_updated',
-        'val_updated'
+        'val_updated',
+        'val_key_set'
     )
+
     result = dict(
         changed=False,
-        message=''
+        message='',
+        msgcode=''
     )
 
     if not module.check_mode:
 
         fin = module.params['registry_filename']
         fou = module.params['registry_filename_out'] if module.params['registry_filename_out'] != '' else fin
-        hky = module.params['hkey']
-        key = module.params['key']
-        val = module.params['val']
         vrb = module.params['verb']
+        hky = module.params['hkey']
         nhk = module.params['new_hkey']
+        key = module.params['key']
         nke = module.params['new_key']
+        val = module.params['val']
         nva = module.params['new_val']
+        igf = module.params['ignore_case']
+
+        # -----------------------------
+        # Read the registry file
+        # -----------------------------
+        IGNORE_CASE = True if igf in ('yes', 'y', 'YES', 'Y') else False
 
         if os.path.isfile(fin):
             info = Path(fin)
@@ -611,7 +776,7 @@ def main():
         # -----------------------------
         fnc = 'read_registry'
         params = (fin,)
-        reg, preamble, res = eval(fnc)(*params)
+        reg, reg_ci, preamble, res = eval(fnc)(*params)
 
         if res == 'read_registry_filenotfound':
             result['message'] = func_rescode[fnc][res]
@@ -624,13 +789,26 @@ def main():
 
             if key == '' and val == '':
                 fnc = f'{vrb}_hkey'
-                params = (reg, hky)
+                params = (reg, reg_ci, hky)
+            elif val == '':
+                fnc = f'{vrb}_hkey_k'
+                params = (reg, reg_ci, hky, key)
             else:
                 fnc = f'{vrb}_hkey_kv'
-                params = (reg, hky, key, val)
+                params = (reg, reg_ci, hky, key, val)
 
             res = eval(fnc)(*params)
-            result['message'] = func_rescode[fnc][res]
+            result['message'] = func_rescode[fnc].get(res, res)
+            result['msgcode'] = res
+
+        elif vrb == 'get':
+            if vrb == 'get' and key != '':
+                fnc = f'{vrb}_hkey_k'
+                params = (reg, reg_ci, hky, key)
+
+            res = eval(fnc)(*params)
+            result['message'] = func_rescode[fnc].get(res, res)
+            result['msgcode'] = res
 
         elif vrb in ('add', 'del', 'upd'):
 
@@ -649,14 +827,15 @@ def main():
             elif vrb == 'upd' and nke != '':
                 fnc = f'{vrb}_key'
                 params = (reg, hky, key, nke)
-            elif vrb == 'upd' and nva != '':
+            elif vrb == 'upd' and (nva != '' or val != ''):
                 fnc = f'{vrb}_val'
-                params = (reg, hky, key, nva)
+                params = (reg, hky, key, nva) if nva != '' else (reg, hky, key, val)
 
-            reg, mod_res = eval(fnc)(*params)
-            result['message'] = func_rescode[fnc][mod_res]
+            reg, res = eval(fnc)(*params)
+            result['message'] = func_rescode[fnc].get(res, res)
+            result['msgcode'] = res
 
-            if mod_res in res_modind:
+            if res in res_modind:
                 result['changed'] = True
 
                 wrt_res = write_registry(fou, preamble, reg)
@@ -665,6 +844,13 @@ def main():
 
         module.exit_json(**result)
 
+
+# =============================================================================
+#
+# Main
+#
+# =============================================================================
+IGNORE_CASE = False
 
 if __name__ == '__main__':
     main()
